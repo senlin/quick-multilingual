@@ -394,7 +394,7 @@ function hlh_get_current_language_prefix() {
 	$secondary_hreflang = get_option( 'hlh_secondary_hreflang' );
 	$secondary_lang_prefix = '/' . $secondary_hreflang . '/';
 
-	$current_url = $_SERVER['REQUEST_URI'];
+	$current_url = isset($_SERVER['REQUEST_URI']) ? esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])) : '';
 	return ( strpos( $current_url, $secondary_lang_prefix ) === 0 ) ? $secondary_lang_prefix : '';
 }
 
