@@ -26,7 +26,7 @@ Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-f
 
 == Installation ==
 
-1. Upload the `html-lang-hreflang` folder to the `/wp-content/plugins/` directory.
+1. Upload the `quick-multilingual` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Go to **Settings > Quick Multilingual** to configure the plugin.
 
