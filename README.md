@@ -3,7 +3,7 @@
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
 ###### Last updated on Septemeber 3, 2024
-###### Development version 1.5.0
+###### Development version 1.5.1
 ###### requires at least WordPress 4.9
 ###### tested up to WordPress 6.6
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -87,6 +87,10 @@ I welcome your contributions very much! PR's will be considered and of course bu
 
 
 ## Changelog
+
+### 1.5.1
+
+* Fix typos
 
 ### 1.5.0
 

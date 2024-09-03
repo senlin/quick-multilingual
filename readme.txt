@@ -4,7 +4,7 @@ Donate link: https://so-wp.com/donations
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires PHP: 7.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -61,6 +61,9 @@ Indeed the Quick Multilingual plugin writes its settings to the database. The in
 Please open an issue on [Github](https://github.com/senlin/quick-multilingual/issues)
 
 == Changelog ==
+
+= 1.5.1 =
+* fix typos
 
 = 1.5.0 =
 * Add `uninstall.php` file to remove all registered settings from `wp_options` table upon plugin deletion.
