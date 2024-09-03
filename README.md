@@ -3,7 +3,7 @@
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
 ###### Last updated on Septemeber 3, 2024
-###### Development version 1.5.1
+###### Development version 1.5.2
 ###### requires at least WordPress 4.9
 ###### tested up to WordPress 6.6
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -17,7 +17,7 @@ Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-f
 ## Features
 
 * **Adjust HTML Lang Attribute:** Dynamically set the `lang` attribute in the HTML tag based on the current language.
-* **Custom Hreflang Tags:** Define custom hreflang codes for primary and secondary languages.
+* **Custom Hreflang Tags:** Define custom `hreflang` tags for primary and secondary languages.
 * **Language Folder Redirection:** Redirect the parent language folder to the secondary language homepage.
 * **Mapping:** map up to 4 pages of the primary language to their translation in the secondary language.
 * **Easy Configuration:** User-friendly settings page for managing language settings and redirections.
@@ -87,6 +87,10 @@ I welcome your contributions very much! PR's will be considered and of course bu
 
 
 ## Changelog
+
+### 1.5.2
+
+* Resolve three errors (checking existence, unslashing, and sanitizing) that came up after running code through Plugin Check (PCP) plugin, which is requirement for release on WP Plugins Directory
 
 ### 1.5.1
 
