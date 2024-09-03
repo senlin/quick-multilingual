@@ -434,7 +434,7 @@ add_action('template_redirect', 'hlh_redirect_language_folder_to_secondary_homep
  * Add settings link to plugin page.
  */
 function hlh_add_settings_link( $links ) {
-	$settings_link = '<a href="options-general.php?page=html-lang-hreflang">' . __( 'Settings', 'quick-multilingual' ) . '</a>';
+	$settings_link = '<a href="options-general.php?page=quick-multilingual">' . __( 'Settings', 'quick-multilingual' ) . '</a>';
 	array_push( $links, $settings_link );
 	return $links;
 }
