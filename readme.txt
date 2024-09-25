@@ -1,6 +1,6 @@
 === Quick Multilingual ===
 Contributors: senlin
-Donate link: https://so-wp.com/donations
+Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 5.0
 Tested up to: 6.6
