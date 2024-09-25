@@ -3,7 +3,7 @@
  * Plugin Name: Quick Multilingual
  * Description: Quick Multilingual allows you to create multilingual brochure sites on WordPress with automatic language attributes and hreflang tags.
  * Author: <a href="https://so-wp.com">Pieter Bos</a>
- * Version: 1.5.2
+ * Version: 1.5.3
  * Requires at least: 4.9
  * Tested up to: 6.6
  * Requires PHP: 7.0
@@ -28,6 +28,26 @@ function so_qmp_load_textdomain() {
 	load_plugin_textdomain( 'quick-multilingual', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'so_qmp_load_textdomain' );
+
+/**
+ * Enqueue admin scripts and styles.
+ */
+function so_qmp_enqueue_admin_scripts($hook) {
+	// Only enqueue on this plugin's page
+	if ('settings_page_quick-multilingual' !== $hook) {
+		return;
+	}
+
+	wp_enqueue_script('so_qmp_admin_script', plugins_url('js/admin.js', __FILE__), array('jquery'), '1.0', true);
+	wp_enqueue_style('so_qmp_admin_style', plugins_url('css/admin.css', __FILE__));
+
+	// Localize the script with new data
+	$translation_array = array(
+		'select_option' => esc_html__( '— Select —', 'quick-multilingual' )
+	);
+	wp_localize_script( 'so_qmp_admin_script', 'so_qmp_vars', $translation_array );
+}
+add_action( 'admin_enqueue_scripts', 'so_qmp_enqueue_admin_scripts' );
 
 /**
  * Register and define settings.
@@ -228,26 +248,6 @@ function so_qmp_options_page_html() {
 }
 
 /**
- * Enqueue admin scripts and styles.
- */
-function so_qmp_enqueue_admin_scripts($hook) {
-	// Only enqueue on our plugin's page
-	if ('settings_page_quick-multilingual' !== $hook) {
-		return;
-	}
-
-	wp_enqueue_script('so_qmp_admin_script', plugins_url('js/admin.js', __FILE__), array('jquery'), '1.0', true);
-	wp_enqueue_style('so_qmp_admin_style', plugins_url('css/admin.css', __FILE__));
-
-	// Localize the script with new data
-	$translation_array = array(
-		'select_option' => esc_html__( '— Select —', 'quick-multilingual' )
-	);
-	wp_localize_script( 'so_qmp_admin_script', 'so_qmp_vars', $translation_array );
-}
-add_action( 'admin_enqueue_scripts', 'so_qmp_enqueue_admin_scripts' );
-
-/**
  * Get the corresponding page ID from the mapping
  *
  * @param int $page_id The page ID to find the mapping for.
@@ -371,7 +371,7 @@ function so_qmp_redirect_language_folder_to_secondary_homepage() {
 		}
 	}
 }
-add_action('template_redirect', 'so_qmp_redirect_language_folder_to_secondary_homepage');
+add_action( 'template_redirect', 'so_qmp_redirect_language_folder_to_secondary_homepage' );
 
 /**
  * Add settings link to plugin page.

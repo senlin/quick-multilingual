@@ -4,7 +4,7 @@ Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 Requires PHP: 7.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -61,6 +61,15 @@ Indeed the Quick Multilingual plugin writes its settings to the database. The in
 Please open an issue on [Github](https://github.com/senlin/quick-multilingual/issues)
 
 == Changelog ==
+
+= 1.5.3. =
+
+* Change the namespace from `hlh`_ to `so_qmp_`
+* Improve sanitisation and escaping throughout the plugin
+* Properly enqueue scripts and styles
+* Internationalise all user-facing strings, including those in JavaScript
+* Update the uninstall.php file for better security and precision
+* Ensure proper handling of external links
 
 = 1.5.2 =
 * Resolve three errors (checking existence, unslashing, and sanitizing) that came up after running code through Plugin Check (PCP) plugin, which is requirement for release on WP Plugins Directory

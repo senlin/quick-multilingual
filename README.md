@@ -3,7 +3,7 @@
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
 ###### Last updated on September 25, 2024
-###### Development version 1.5.2
+###### Development version 1.5.3
 ###### requires at least WordPress 4.9
 ###### tested up to WordPress 6.6
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -87,6 +87,15 @@ I welcome your contributions very much! PR's will be considered and of course bu
 
 
 ## Changelog
+
+### 1.5.3
+
+* Change the namespace from `hlh`_ to `so_qmp_`
+* Improve sanitisation and escaping throughout the plugin
+* Properly enqueue scripts and styles
+* Internationalise all user-facing strings, including those in JavaScript
+* Update the uninstall.php file for better security and precision
+* Ensure proper handling of external links
 
 ### 1.5.2
 
