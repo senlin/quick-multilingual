@@ -72,17 +72,17 @@ add_action( 'admin_menu', 'so_qmp_create_options_page' );
 function so_qmp_options_page_html() {
 	?>
 	<div class="wrap">
-		<h1><?php _e( 'Quick Multilingual Settings', 'quick-multilingual' ); ?></h1>
-		<p><?php _e( 'Quick Multilingual is a WordPress plugin designed to enhance multilingual websites by adjusting the HTML lang attribute and adding hreflang tags.', 'quick-multilingual' ); ?></p>
-		<p><?php _e( 'This plugin allows you to set the HTML language attribute for up to two languages, custom hreflang codes for those languages, redirect the "language folder" (the secondary language placeholder page) to its respective homepage, map up to 4 primary language pages to their secondary page translations and properly handle language attributes for better SEO and user experience.', 'quick-multilingual' ); ?></p>
+		<h1><?php esc_html_e( 'Quick Multilingual Settings', 'quick-multilingual' ); ?></h1>
+		<p><?php esc_html_e( 'Quick Multilingual is a WordPress plugin designed to enhance multilingual websites by adjusting the HTML lang attribute and adding hreflang tags.', 'quick-multilingual' ); ?></p>
+		<p><?php esc_html_e( 'This plugin allows you to set the HTML language attribute for up to two languages, custom hreflang codes for those languages, redirect the "language folder" (the secondary language placeholder page) to its respective homepage, map up to 4 primary language pages to their secondary page translations and properly handle language attributes for better SEO and user experience.', 'quick-multilingual' ); ?></p>
 
 		<h2 class="nav-tab-wrapper">
-			<a href="#general-settings" class="nav-tab"><?php _e( 'General Settings', 'quick-multilingual' ); ?></a>
-			<a href="#page-translations" class="nav-tab"><?php _e( 'Page Translations', 'quick-multilingual' ); ?></a>
+			<a href="#general-settings" class="nav-tab"><?php esc_html_e( 'General Settings', 'quick-multilingual' ); ?></a>
+			<a href="#page-translations" class="nav-tab"><?php esc_html_e( 'Page Translations', 'quick-multilingual' ); ?></a>
 		</h2>
 
 		<div id="general-settings" class="hlh-tab-content">
-			<h3><?php printf( __( 'Find all HTML lang attributes %s.', 'quick-multilingual' ), '<a href="https://gist.github.com/JamieMason/3748498" target="_blank">' . __( 'here', 'quick-multilingual' ) . '</a>' ); ?></h3>
+			<h3><?php printf( esc_html(__( 'Find all HTML lang attributes %s.', 'quick-multilingual' ), '<a href="https://gist.github.com/JamieMason/3748498" target="_blank">' . __( 'here', 'quick-multilingual' ) . '</a>' ) ); ?></h3>
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( 'hlh-settings-group' );
@@ -90,36 +90,36 @@ function so_qmp_options_page_html() {
 				?>
 				<table class="form-table">
 					<tr valign="top">
-						<th scope="row"><?php _e( 'HTML lang attribute primary language', 'quick-multilingual' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'HTML lang attribute primary language', 'quick-multilingual' ); ?></th>
 						<td><input type="text" name="so_qmp_primary_lang" value="<?php echo esc_attr( get_option('so_qmp_primary_lang') ); ?>" /></td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><?php _e( 'HTML lang attribute secondary language', 'quick-multilingual' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'HTML lang attribute secondary language', 'quick-multilingual' ); ?></th>
 						<td><input type="text" name="so_qmp_secondary_lang" value="<?php echo esc_attr( get_option('so_qmp_secondary_lang') ); ?>" /></td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><?php _e( 'Hreflang primary language', 'quick-multilingual' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Hreflang primary language', 'quick-multilingual' ); ?></th>
 						<td><input type="text" name="so_qmp_primary_hreflang" value="<?php echo esc_attr( get_option('so_qmp_primary_hreflang') ); ?>" /></td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><?php _e( 'Hreflang secondary language', 'quick-multilingual' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Hreflang secondary language', 'quick-multilingual' ); ?></th>
 						<td><input type="text" name="so_qmp_secondary_hreflang" value="<?php echo esc_attr( get_option('so_qmp_secondary_hreflang') ); ?>" /></td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><?php _e( 'Language Folder Page', 'quick-multilingual' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Language Folder Page', 'quick-multilingual' ); ?></th>
 						<td>
 							<?php
 							wp_dropdown_pages(array(
 								'name' => 'so_qmp_language_folder_page',
 								'selected' => esc_attr( get_option('so_qmp_language_folder_page') ),
-								'show_option_none' => __( '— Select —', 'quick-multilingual' ),
+								'show_option_none' => esc_html(__( '— Select —', 'quick-multilingual' ) ),
 								'option_none_value' => '0'
 							));
 							?>
 						</td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><?php _e( 'Number of Pages to Map', 'quick-multilingual' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Number of Pages to Map', 'quick-multilingual' ); ?></th>
 						<td>
 							<input type="number" id="number_of_pages" name="so_qmp_number_of_pages" value="<?php echo esc_attr( get_option('so_qmp_number_of_pages', 1) ); ?>" min="1" max="4" />
 						</td>
@@ -130,7 +130,7 @@ function so_qmp_options_page_html() {
 		</div>
 
 		<div id="page-translations" class="hlh-tab-content" style="display:none;">
-			<h3><?php _e( 'Here you can map the pages of the primary language to the secondary language.', 'quick-multilingual' ); ?></h3>
+			<h3><?php esc_html_e( 'Here you can map the pages of the primary language to the secondary language.', 'quick-multilingual' ); ?></h3>
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( 'hlh-page-translations-group' );
@@ -147,9 +147,9 @@ function so_qmp_options_page_html() {
 					<table class="form-table" id="page-translations-table">
 						<thead>
 							<tr>
-								<th><?php _e('Page', 'quick-multilingual'); ?></th>
-								<th><?php _e('Primary Language Page', 'quick-multilingual'); ?></th>
-								<th><?php _e('Secondary Language Page', 'quick-multilingual'); ?></th>
+								<th><?php esc_html_e('Page', 'quick-multilingual'); ?></th>
+								<th><?php esc_html_e('Primary Language Page', 'quick-multilingual'); ?></th>
+								<th><?php esc_html_e('Secondary Language Page', 'quick-multilingual'); ?></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -161,7 +161,7 @@ function so_qmp_options_page_html() {
 								$secondary_page = get_option('so_qmp_page_mapping_' . $i)['secondary'] ?? 0;
 								?>
 								<tr valign="top" class="page-mapping-row">
-									<td><?php echo sprintf(__('Page %d', 'quick-multilingual'), $i); ?></td>
+									<td><?php echo sprintf( esc_html(__('Page %d', 'quick-multilingual'), $i) ); ?></td>
 									<td>
 										<?php
 										// Exclude the language folder page and its children
@@ -176,7 +176,7 @@ function so_qmp_options_page_html() {
 											'name' => 'so_qmp_page_mapping_' . $i . '[primary]',
 											'selected' => esc_attr($primary_page),
 											'exclude' => implode(',', $exclude_pages),
-											'show_option_none' => __('— Select —', 'quick-multilingual'),
+											'show_option_none' => esc_html( __('— Select —', 'quick-multilingual') ),
 											'option_none_value' => '0'
 										));
 										?>
@@ -188,7 +188,7 @@ function so_qmp_options_page_html() {
 											'name' => 'so_qmp_page_mapping_' . $i . '[secondary]',
 											'selected' => esc_attr($secondary_page),
 											'child_of' => $language_folder_page_id,
-											'show_option_none' => __('— Select —', 'quick-multilingual'),
+											'show_option_none' => esc_html( __('— Select —', 'quick-multilingual') ),
 											'option_none_value' => '0'
 										));
 										?>
@@ -244,7 +244,7 @@ function so_qmp_options_page_html() {
 				for (var i = $rows.length; i < numPages; i++) {
 					$table.append(`
 						<tr valign="top" class="page-mapping-row">
-							<td><?php echo sprintf( __( 'Page %d', 'quick-multilingual' ), ' + (i + 1) + ' ); ?></td>
+							<td><?php echo sprintf( esc_html( __( 'Page %d', 'quick-multilingual' ), ' + (i + 1) + ' ) ); ?></td>
 							<td>
 								<?php
 								// Exclude the language folder page and its children
@@ -256,7 +256,7 @@ function so_qmp_options_page_html() {
 								}
 								?>
 								<select name="so_qmp_page_mapping_' + (i + 1) + '[primary]">
-									<option value="0"><?php _e( '— Select —', 'quick-multilingual' ); ?></option>
+									<option value="0"><?php esc_html_e( '— Select —', 'quick-multilingual' ); ?></option>
 									<?php
 									foreach ( get_pages( array( 'exclude' => implode(',', $exclude_pages) ) ) as $page ) {
 										echo '<option value="' . esc_attr( $page->ID ) . '">' . esc_html( $page->post_title ) . '</option>';
@@ -266,7 +266,7 @@ function so_qmp_options_page_html() {
 							</td>
 							<td>
 								<select name="so_qmp_page_mapping_' + (i + 1) + '[secondary]">
-									<option value="0"><?php _e( '— Select —', 'quick-multilingual' ); ?></option>
+									<option value="0"><?php esc_html_e( '— Select —', 'quick-multilingual' ); ?></option>
 									<?php
 									$language_folder_page_id = get_option( 'so_qmp_language_folder_page' );
 									foreach ( get_pages( array( 'child_of' => $language_folder_page_id ) ) as $page ) {
@@ -342,16 +342,16 @@ function so_qmp_add_hreflang_tags() {
 
 		if ($mapped_primary_id && $primary_url) {
 			// Output hreflang tag for primary language
-			echo '<link rel="alternate" hreflang="' . esc_attr($primary_hreflang) . '" href="' . esc_url($primary_url) . '" />' . PHP_EOL;
+			echo '<link rel="alternate" hreflang="' . esc_attr($primary_hreflang) . '" href="' . esc_url($primary_url) . '" />' . PHPesc_html_eOL;
 		}
 		if ($mapped_secondary_id && $secondary_url) {
 			// Output hreflang tag for secondary language
-			echo '<link rel="alternate" hreflang="' . esc_attr($secondary_hreflang) . '" href="' . esc_url($secondary_url) . '" />' . PHP_EOL;
+			echo '<link rel="alternate" hreflang="' . esc_attr($secondary_hreflang) . '" href="' . esc_url($secondary_url) . '" />' . PHPesc_html_eOL;
 		}
 
 		// Output x-default hreflang tag pointing to the primary URL (if exists) or secondary URL as fallback
 		$x_default_url = $primary_url ? $primary_url : ($secondary_url ? $secondary_url : $current_page_url);
-		echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($x_default_url) . '" />' . PHP_EOL;
+		echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($x_default_url) . '" />' . PHPesc_html_eOL;
 
 	} else {
 		// Determine if the current page is under the secondary language path
@@ -361,14 +361,14 @@ function so_qmp_add_hreflang_tags() {
 		// Output hreflang tags for non-mapped pages
 		if ($is_secondary_lang_page) {
 			// Output hreflang tag for secondary language
-			echo '<link rel="alternate" hreflang="' . esc_attr($secondary_hreflang) . '" href="' . esc_url($current_page_url) . '" />' . PHP_EOL;
+			echo '<link rel="alternate" hreflang="' . esc_attr($secondary_hreflang) . '" href="' . esc_url($current_page_url) . '" />' . PHPesc_html_eOL;
 		} else {
 			// Output hreflang tag for primary language
-			echo '<link rel="alternate" hreflang="' . esc_attr($primary_hreflang) . '" href="' . esc_url($current_page_url) . '" />' . PHP_EOL;
+			echo '<link rel="alternate" hreflang="' . esc_attr($primary_hreflang) . '" href="' . esc_url($current_page_url) . '" />' . PHPesc_html_eOL;
 		}
 
 		// Output x-default hreflang tag pointing to the current page URL
-		echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($current_page_url) . '" />' . PHP_EOL;
+		echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($current_page_url) . '" />' . PHPesc_html_eOL;
 	}
 }
 add_action('wp_head', 'so_qmp_add_hreflang_tags', 1);
@@ -434,7 +434,7 @@ add_action('template_redirect', 'so_qmp_redirect_language_folder_to_secondary_ho
  * Add settings link to plugin page.
  */
 function so_qmp_add_settings_link( $links ) {
-	$settings_link = '<a href="options-general.php?page=quick-multilingual">' . __( 'Settings', 'quick-multilingual' ) . '</a>';
+	$settings_link = '<a href="options-general.php?page=quick-multilingual">' . esc_html( __( 'Settings', 'quick-multilingual' ) ) . '</a>';
 	array_push( $links, $settings_link );
 	return $links;
 }
