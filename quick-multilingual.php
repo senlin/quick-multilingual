@@ -342,16 +342,16 @@ function so_qmp_add_hreflang_tags() {
 
 		if ($mapped_primary_id && $primary_url) {
 			// Output hreflang tag for primary language
-			echo '<link rel="alternate" hreflang="' . esc_attr($primary_hreflang) . '" href="' . esc_url($primary_url) . '" />' . PHPesc_html_eOL;
+			echo '<link rel="alternate" hreflang="' . esc_attr($primary_hreflang) . '" href="' . esc_url($primary_url) . '" />' . PHP_EOL;
 		}
 		if ($mapped_secondary_id && $secondary_url) {
 			// Output hreflang tag for secondary language
-			echo '<link rel="alternate" hreflang="' . esc_attr($secondary_hreflang) . '" href="' . esc_url($secondary_url) . '" />' . PHPesc_html_eOL;
+			echo '<link rel="alternate" hreflang="' . esc_attr($secondary_hreflang) . '" href="' . esc_url($secondary_url) . '" />' . PHP_EOL;
 		}
 
 		// Output x-default hreflang tag pointing to the primary URL (if exists) or secondary URL as fallback
 		$x_default_url = $primary_url ? $primary_url : ($secondary_url ? $secondary_url : $current_page_url);
-		echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($x_default_url) . '" />' . PHPesc_html_eOL;
+		echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($x_default_url) . '" />' . PHP_EOL;
 
 	} else {
 		// Determine if the current page is under the secondary language path
@@ -361,14 +361,14 @@ function so_qmp_add_hreflang_tags() {
 		// Output hreflang tags for non-mapped pages
 		if ($is_secondary_lang_page) {
 			// Output hreflang tag for secondary language
-			echo '<link rel="alternate" hreflang="' . esc_attr($secondary_hreflang) . '" href="' . esc_url($current_page_url) . '" />' . PHPesc_html_eOL;
+			echo '<link rel="alternate" hreflang="' . esc_attr($secondary_hreflang) . '" href="' . esc_url($current_page_url) . '" />' . PHP_EOL;
 		} else {
 			// Output hreflang tag for primary language
-			echo '<link rel="alternate" hreflang="' . esc_attr($primary_hreflang) . '" href="' . esc_url($current_page_url) . '" />' . PHPesc_html_eOL;
+			echo '<link rel="alternate" hreflang="' . esc_attr($primary_hreflang) . '" href="' . esc_url($current_page_url) . '" />' . PHP_EOL;
 		}
 
 		// Output x-default hreflang tag pointing to the current page URL
-		echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($current_page_url) . '" />' . PHPesc_html_eOL;
+		echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($current_page_url) . '" />' . PHP_EOL;
 	}
 }
 add_action('wp_head', 'so_qmp_add_hreflang_tags', 1);
