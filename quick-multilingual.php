@@ -47,7 +47,7 @@ function so_qmp_register_settings() {
 	register_setting( 'hlh-settings-group', 'so_qmp_primary_hreflang' );
 	register_setting( 'hlh-settings-group', 'so_qmp_secondary_hreflang' );
 	register_setting( 'hlh-settings-group', 'so_qmp_language_folder_page' );
-	register_setting('hlh-settings-group', 'so_qmp_number_of_pages');
+	register_setting( 'hlh-settings-group', 'so_qmp_number_of_pages' );
 
 	// Register page mappings settings
 	for ( $i = 1; $i <= 4; $i++ ) {
