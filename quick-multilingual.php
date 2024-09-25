@@ -106,10 +106,6 @@ function so_qmp_options_page_html() {
 		return;
 	}
 
-	if ( isset( $_GET['settings-updated'] ) ) {
-		add_settings_error( 'so_qmp_messages', 'so_qmp_message', esc_html__( 'Settings Saved', 'quick-multilingual' ), 'updated' );
-	}
-
 	settings_errors( 'so_qmp_messages' );
 	?>
 	<div class="wrap">
