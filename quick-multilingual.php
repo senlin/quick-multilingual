@@ -42,16 +42,16 @@ add_action( 'plugins_loaded', 'so_qmp_load_textdomain' );
  */
 // Register the new settings and add the options page
 function so_qmp_register_settings() {
-	register_setting( 'hlh-settings-group', 'so_qmp_primary_lang' );
-	register_setting( 'hlh-settings-group', 'so_qmp_secondary_lang' );
-	register_setting( 'hlh-settings-group', 'so_qmp_primary_hreflang' );
-	register_setting( 'hlh-settings-group', 'so_qmp_secondary_hreflang' );
-	register_setting( 'hlh-settings-group', 'so_qmp_language_folder_page' );
-	register_setting( 'hlh-settings-group', 'so_qmp_number_of_pages' );
+	register_setting( 'qmp-settings-group', 'so_qmp_primary_lang' );
+	register_setting( 'qmp-settings-group', 'so_qmp_secondary_lang' );
+	register_setting( 'qmp-settings-group', 'so_qmp_primary_hreflang' );
+	register_setting( 'qmp-settings-group', 'so_qmp_secondary_hreflang' );
+	register_setting( 'qmp-settings-group', 'so_qmp_language_folder_page' );
+	register_setting( 'qmp-settings-group', 'so_qmp_number_of_pages' );
 
 	// Register page mappings settings
 	for ( $i = 1; $i <= 4; $i++ ) {
-		register_setting( 'hlh-page-translations-group', 'so_qmp_page_mapping_' . $i );
+		register_setting( 'qmp-page-translations-group', 'so_qmp_page_mapping_' . $i );
 	}
 }
 add_action( 'admin_init', 'so_qmp_register_settings' );
@@ -81,12 +81,12 @@ function so_qmp_options_page_html() {
 			<a href="#page-translations" class="nav-tab"><?php esc_html_e( 'Page Translations', 'quick-multilingual' ); ?></a>
 		</h2>
 
-		<div id="general-settings" class="hlh-tab-content">
+		<div id="general-settings" class="qmp-tab-content">
 			<h3><?php printf( esc_html(__( 'Find all HTML lang attributes %s.', 'quick-multilingual' ), '<a href="https://gist.github.com/JamieMason/3748498" target="_blank">' . __( 'here', 'quick-multilingual' ) . '</a>' ) ); ?></h3>
 			<form method="post" action="options.php">
 				<?php
-				settings_fields( 'hlh-settings-group' );
-				do_settings_sections( 'hlh-settings-group' );
+				settings_fields( 'qmp-settings-group' );
+				do_settings_sections( 'qmp-settings-group' );
 				?>
 				<table class="form-table">
 					<tr valign="top">
@@ -129,12 +129,12 @@ function so_qmp_options_page_html() {
 			</form>
 		</div>
 
-		<div id="page-translations" class="hlh-tab-content" style="display:none;">
+		<div id="page-translations" class="qmp-tab-content" style="display:none;">
 			<h3><?php esc_html_e( 'Here you can map the pages of the primary language to the secondary language.', 'quick-multilingual' ); ?></h3>
 			<form method="post" action="options.php">
 				<?php
-				settings_fields( 'hlh-page-translations-group' );
-				do_settings_sections( 'hlh-page-translations-group' );
+				settings_fields( 'qmp-page-translations-group' );
+				do_settings_sections( 'qmp-page-translations-group' );
 
 				// Display the number of page mappings set by the user
 				$number_of_pages = intval( get_option( 'so_qmp_number_of_pages', 1 ) );
@@ -213,7 +213,7 @@ function so_qmp_options_page_html() {
 			var activeTab = localStorage.getItem('so_qmp_active_tab');
 			if (activeTab) {
 				$('.nav-tab').removeClass('nav-tab-active');
-				$('.hlh-tab-content').hide();
+				$('.qmp-tab-content').hide();
 				$('a[href="' + activeTab + '"]').addClass('nav-tab-active');
 				$(activeTab).show();
 			} else {
@@ -225,7 +225,7 @@ function so_qmp_options_page_html() {
 				e.preventDefault();
 				$('.nav-tab').removeClass('nav-tab-active');
 				$(this).addClass('nav-tab-active');
-				$('.hlh-tab-content').hide();
+				$('.qmp-tab-content').hide();
 				$($(this).attr('href')).show();
 				// Save the active tab in localStorage
 				localStorage.setItem('so_qmp_active_tab', $(this).attr('href'));
