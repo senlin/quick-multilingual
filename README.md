@@ -2,8 +2,8 @@
 
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
-###### Last updated on September 25, 2024
-###### Development version 1.5.3
+###### Last updated on September 26, 2024
+###### Development version 1.5.4
 ###### requires at least WordPress 4.9
 ###### tested up to WordPress 6.6
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -27,7 +27,8 @@ Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-f
 
 1. Upload the `quick-multilingual` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to **Settings > Quick Multilingual** to configure the plugin.
+3. Read "Configuration" in readme file.
+4. Go to **Settings > Quick Multilingual** to configure the plugin.
 
 ## Configuration
 
@@ -85,8 +86,25 @@ I welcome your contributions very much! PR's will be considered and of course bu
 
 [WordPress](https://profiles.wordpress.org/senlin/)
 
+## Screenshots
+
+Plugin Settings page (two tabs) and frontend output.
+
+![General Settings tab (set HTML attribute and `hreflang` tag primary/secondary languages)](assets/screenshot-1.png "General Settings tab")
+---
+![Page Translations tab (to map translations)](assets/screenshot-2.png "Page Translations tab")
+---
+![Frontend sourcecode primary language](assets/screenshot-3.png "Frontend sourcecode primary language")
+---
+![Frontend sourcecode secondary language](assets/screenshot-4.png "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 1.5.4
+
+* September 26, 2024
+* Plugin approved by WP Plugins Review Team
+* Update readme files with screenshots
 
 ### 1.5.3
 

@@ -4,7 +4,7 @@ Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 Requires PHP: 7.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -28,7 +28,8 @@ Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-f
 
 1. Upload the `quick-multilingual` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to **Settings > Quick Multilingual** to configure the plugin.
+3. Read "Configuration" in readme file.
+4. Go to **Settings > Quick Multilingual** to configure the plugin.
 
 == Configuration ==
 
@@ -60,7 +61,20 @@ Indeed the Quick Multilingual plugin writes its settings to the database. The in
 
 Please open an issue on [Github](https://github.com/senlin/quick-multilingual/issues)
 
+== Screenshots ==
+
+1. General Settings tab (set HTML attribute and `hreflang` tag primary/secondary languages)
+2. Page Translations tab (to map translations)
+3. Frontend sourcecode primary language
+4. Frontend sourcecode secondary language
+
 == Changelog ==
+
+= 1.5.4 =
+
+* September 26, 2024
+* Plugin approved by WP Plugins Review Team
+* Update readme files with screenshots
 
 = 1.5.3. =
 
