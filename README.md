@@ -3,7 +3,7 @@
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
 ###### Last updated on September 26, 2024
-###### Development version 1.5.4
+###### Development version 1.5.5
 ###### requires at least WordPress 4.9
 ###### tested up to WordPress 6.6
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -99,6 +99,11 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 1.5.5
+
+* September 26, 2024
+* Make HTML lang attribute output more robust
 
 ### 1.5.4
 
