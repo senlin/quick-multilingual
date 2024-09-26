@@ -329,9 +329,26 @@ function so_qmp_set_html_lang($output) {
 	$current_lang_prefix = so_qmp_get_current_language_prefix();
 	$html_lang = ($current_lang_prefix === '/' . get_option('so_qmp_secondary_hreflang') . '/') ? $secondary_lang : $primary_lang;
 
-	return str_replace('<html', '<html lang="' . esc_attr($html_lang) . '"', $output);
+	// Debug information (commented out for production)
+	/*
+	error_log('Quick Multilingual Debug - Primary Lang: ' . $primary_lang);
+	error_log('Quick Multilingual Debug - Secondary Lang: ' . $secondary_lang);
+	error_log('Quick Multilingual Debug - Current Lang Prefix: ' . $current_lang_prefix);
+	error_log('Quick Multilingual Debug - Chosen Lang: ' . $html_lang);
+	*/
+
+	// Replace the entire lang attribute
+	$new_output = preg_replace('/lang="[^"]*"/', 'lang="' . esc_attr($html_lang) . '"', $output);
+
+	// If no lang attribute found, add it
+	if ($new_output === $output) {
+		$new_output = str_replace('<html', '<html lang="' . esc_attr($html_lang) . '"', $output);
+	}
+
+	return $new_output;
 }
-add_filter('language_attributes', 'so_qmp_set_html_lang', 10);
+// Use a high priority to ensure this runs after WordPress core
+add_filter('language_attributes', 'so_qmp_set_html_lang', 100);
 
 /**
  * Get the current language prefix based on the URL.
