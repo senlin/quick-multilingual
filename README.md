@@ -90,13 +90,13 @@ I welcome your contributions very much! PR's will be considered and of course bu
 
 Plugin Settings page (two tabs) and frontend output.
 
-![General Settings tab (set HTML attribute and `hreflang` tag primary/secondary languages)](assets/screenshot-1.png "General Settings tab")
+![General Settings tab (set HTML attribute and `hreflang` tag primary/secondary languages)](assets/screenshot-1.jpg "General Settings tab")
 ---
-![Page Translations tab (to map translations)](assets/screenshot-2.png "Page Translations tab")
+![Page Translations tab (to map translations)](assets/screenshot-2.jpg "Page Translations tab")
 ---
-![Frontend sourcecode primary language](assets/screenshot-3.png "Frontend sourcecode primary language")
+![Frontend sourcecode primary language](assets/screenshot-3.jpg "Frontend sourcecode primary language")
 ---
-![Frontend sourcecode secondary language](assets/screenshot-4.png "Frontend sourcecode secondary language")
+![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
 
