@@ -318,12 +318,18 @@ class QuickMultilingual {
 
                 $redirect_url = get_permalink($first_mapped_secondary_page_id);
 
-                if ($redirect_url) {
+                if ($redirect_url && $this->is_valid_url($redirect_url)) {
                     wp_safe_redirect(esc_url($redirect_url), 301);
                     exit;
                 }
             }
         }
+    }
+
+    private function is_valid_url($url) {
+        // Validate the URL to ensure it is a valid URL within the site
+        $home_url = home_url();
+        return strpos($url, $home_url) === 0;
     }
 
     public function add_settings_link($links) {
