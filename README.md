@@ -2,10 +2,10 @@
 
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
-###### Last updated on September 26, 2024
-###### Development version 1.5.5
-###### requires at least WordPress 4.9
-###### tested up to WordPress 6.6
+###### Last updated on April 27, 2025
+###### Development version 1.5.6
+###### requires at least WordPress 5.0
+###### tested up to WordPress 6.8
 ###### Author: [Pieter Bos](https://github.com/senlin)
 
 Quick Multilingual allows you to create multilingual brochure sites on WordPress with automatic language attributes and hreflang tags.
@@ -99,6 +99,12 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 1.5.6
+
+* date: April 27, 2025
+* removed redundant `load_plugin_textdomain()` function and increased min required WP version
+* tested up to WP 6.8
 
 ### 1.5.5
 

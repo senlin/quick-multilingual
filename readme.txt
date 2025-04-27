@@ -3,8 +3,8 @@ Contributors: senlin
 Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 1.5.5
+Tested up to: 6.8
+Stable tag: 1.5.6
 Requires PHP: 7.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,6 +69,12 @@ Please open an issue on [Github](https://github.com/senlin/quick-multilingual/is
 4. Frontend sourcecode secondary language
 
 == Changelog ==
+
+= 1.5.6 =
+
+* date: April 27, 2025
+* removed redundant `load_plugin_textdomain()` function and increased min required WP version
+* tested up to WP 6.8
 
 = 1.5.5 =
 
