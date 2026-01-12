@@ -3,7 +3,7 @@ Contributors: senlin
 Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 5.0
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: 1.5.6
 Requires PHP: 7.0
 License: GPL-2.0+

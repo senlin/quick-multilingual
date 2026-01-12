@@ -5,7 +5,7 @@
 ###### Last updated on April 27, 2025
 ###### Development version 1.5.6
 ###### requires at least WordPress 5.0
-###### tested up to WordPress 6.8
+###### tested up to WordPress 6.9
 ###### Author: [Pieter Bos](https://github.com/senlin)
 
 Quick Multilingual allows you to create multilingual brochure sites on WordPress with automatic language attributes and hreflang tags.

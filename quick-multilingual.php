@@ -5,7 +5,7 @@
  * Author: <a href="https://so-wp.com">Pieter Bos</a>
  * Version: 1.5.6
  * Requires at least: 5.0
- * Tested up to: 6.8
+ * Tested up to: 6.9
  * Requires PHP: 7.0
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
