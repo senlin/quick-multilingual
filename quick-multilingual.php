@@ -21,6 +21,8 @@
 // Don't load the plugin file directly
 defined( 'ABSPATH' ) || exit;
 
+define( 'SO_QMP_VERSION', '1.5.6' );
+
 /**
  * Enqueue admin scripts and styles.
  */
@@ -147,12 +149,13 @@ function so_qmp_options_page_html() {
 						<th scope="row"><?php esc_html_e( 'Language Folder Page', 'quick-multilingual' ); ?></th>
 						<td>
 							<?php
-							wp_dropdown_pages(array(
-								'name' => 'so_qmp_language_folder_page',
-								'selected' => get_option('so_qmp_language_folder_page'),
-								'show_option_none' => esc_html__( '— Select —', 'quick-multilingual' ),
-								'option_none_value' => '0'
-							));
+							wp_dropdown_pages( array(
+								'name'              => 'so_qmp_page_mapping_' . absint( $i ) . '[primary]',
+								'selected'          => absint( $primary_page ),
+								'exclude'           => esc_attr( implode( ',', array_map( 'absint', $exclude_pages ) ) ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Admin-only settings screen; excludes a small, bounded set of pages.
+								'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
+								'option_none_value' => '0',
+							) );
 							?>
 						</td>
 					</tr>
@@ -192,34 +195,40 @@ function so_qmp_options_page_html() {
 							$secondary_page = isset($page_mapping['secondary']) ? $page_mapping['secondary'] : 0;
 							?>
 							<tr valign="top" class="page-mapping-row">
-								<td><?php echo esc_html(sprintf(__('Page %d', 'quick-multilingual'), $i)); ?></td>
+								<td><?php echo esc_html(
+									sprintf(
+										/* translators: %d: page row number */
+										__( 'Page %d', 'quick-multilingual' ),
+										$i
+									)
+								); ?></td>
 								<td>
 									<?php
-									$language_folder_page_id = get_option('so_qmp_language_folder_page');
+									$language_folder_page_id = absint( get_option( 'so_qmp_language_folder_page' ) );
 									$exclude_pages = array($language_folder_page_id);
 									$children_pages = get_pages(array('child_of' => $language_folder_page_id));
 									foreach ($children_pages as $child_page) {
 										$exclude_pages[] = $child_page->ID;
 									}
 
-									wp_dropdown_pages(array(
-										'name' => 'so_qmp_page_mapping_' . $i . '[primary]',
-										'selected' => $primary_page,
-										'exclude' => implode(',', $exclude_pages),
-										'show_option_none' => esc_html__('— Select —', 'quick-multilingual'),
-										'option_none_value' => '0'
-									));
+									wp_dropdown_pages( array(
+										'name'              => 'so_qmp_page_mapping_' . absint( $i ) . '[primary]',
+										'selected'          => absint( $primary_page ),
+										'exclude'           => esc_attr( implode( ',', array_map( 'absint', $exclude_pages ) ) ),
+										'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
+										'option_none_value' => '0',
+									) );
 									?>
 								</td>
 								<td>
 									<?php
-									wp_dropdown_pages(array(
-										'name' => 'so_qmp_page_mapping_' . $i . '[secondary]',
-										'selected' => $secondary_page,
-										'child_of' => $language_folder_page_id,
-										'show_option_none' => esc_html__('— Select —', 'quick-multilingual'),
-										'option_none_value' => '0'
-									));
+									wp_dropdown_pages( array(
+										'name'              => 'so_qmp_page_mapping_' . absint( $i ) . '[secondary]',
+										'selected'          => absint( $secondary_page ),
+										'child_of'          => absint( $language_folder_page_id ),
+										'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
+										'option_none_value' => '0',
+									) );
 									?>
 								</td>
 							</tr>
