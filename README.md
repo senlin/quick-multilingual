@@ -2,10 +2,10 @@
 
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
-###### Last updated on April 27, 2025
-###### Development version 1.5.6
+###### Last updated on August 18, 2026
+###### Development version 1.5.7
 ###### requires at least WordPress 5.0
-###### tested up to WordPress 6.9
+###### tested up to WordPress 7.1
 ###### Author: [Pieter Bos](https://github.com/senlin)
 
 Quick Multilingual allows you to create multilingual brochure sites on WordPress with automatic language attributes and hreflang tags.
@@ -99,6 +99,18 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 1.5.7
+
+* date: August 18, 2026
+* Fixed: Escaped all admin option outputs and dropdowns to satisfy PHPCS/PCP checks and prevent unescaped output vulnerabilities.
+* Fixed: Added explicit casting with absint() for stored page IDs (for example so_qmp_language_folder_page) to ensure integer values are used where expected.
+* Fixed: Added translators comment for the "Page %d" label to clarify the placeholder meaning.
+* Changed: Replaced hardcoded script version with SO_QMP_VERSION and bumped asset versioning to improve cache-busting for admin.js and admin.css.
+* Fixed: Added a targeted PHPCS ignore for an admin-only exclude usage in wp_dropdown_pages() to address a WordPress VIP performance warning (settings screen; excludes a small, bounded set of pages).
+* Changed: Prefixed uninstall.php file-scope variables to follow plugin naming conventions and remove PCP naming warnings.
+* Notes: No breaking changes. Behaviour is unchanged; changes are defensive and to satisfy code-quality checks.
+* tested up to WP 7.1
 
 ### 1.5.6
 

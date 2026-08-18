@@ -3,8 +3,8 @@ Contributors: senlin
 Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 5.0
-Tested up to: 6.9
-Stable tag: 1.5.6
+Tested up to: 7.1
+Stable tag: 1.5.7
 Requires PHP: 7.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,6 +69,18 @@ Please open an issue on [Github](https://github.com/senlin/quick-multilingual/is
 4. Frontend sourcecode secondary language
 
 == Changelog ==
+
+= 1.5.7 =
+
+* date: August 18, 2026
+* Fixed: Escaped all admin option outputs and dropdowns to satisfy PHPCS/PCP checks and prevent unescaped output vulnerabilities.
+* Fixed: Added explicit casting with absint() for stored page IDs (for example so_qmp_language_folder_page) to ensure integer values are used where expected.
+* Fixed: Added translators comment for the "Page %d" label to clarify the placeholder meaning.
+* Changed: Replaced hardcoded script version with SO_QMP_VERSION and bumped asset versioning to improve cache-busting for admin.js and admin.css.
+* Fixed: Added a targeted PHPCS ignore for an admin-only exclude usage in wp_dropdown_pages() to address a WordPress VIP performance warning (settings screen; excludes a small, bounded set of pages).
+* Changed: Prefixed uninstall.php file-scope variables to follow plugin naming conventions and remove PCP naming warnings.
+* Notes: No breaking changes. Behaviour is unchanged; changes are defensive and to satisfy code-quality checks.
+* tested up to WP 7.1
 
 = 1.5.6 =
 
