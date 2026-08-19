@@ -2,8 +2,8 @@
 
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
-###### Last updated on August 18, 2026
-###### Development version 1.5.7
+###### Last updated on August 19, 2026
+###### Development version 1.5.8
 ###### requires at least WordPress 5.0
 ###### tested up to WordPress 7.1
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -99,6 +99,11 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 1.5.8
+
+* date: August 19, 2026
+* Fixed: HTML lang attribute now correctly switches to the secondary language based on the page hierarchy instead of unreliable URL string matching.
 
 ### 1.5.7
 

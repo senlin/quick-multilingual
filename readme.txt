@@ -4,7 +4,7 @@ Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 5.0
 Tested up to: 7.1
-Stable tag: 1.5.7
+Stable tag: 1.5.8
 Requires PHP: 7.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,6 +69,11 @@ Please open an issue on [Github](https://github.com/senlin/quick-multilingual/is
 4. Frontend sourcecode secondary language
 
 == Changelog ==
+
+= 1.5.8 =
+
+* date: August 19, 2026
+* Fixed: HTML lang attribute now correctly switches to the secondary language based on the page hierarchy instead of unreliable URL string matching.
 
 = 1.5.7 =
 

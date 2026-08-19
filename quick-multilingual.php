@@ -3,7 +3,7 @@
  * Plugin Name: Quick Multilingual
  * Description: Quick Multilingual allows you to create multilingual brochure sites on WordPress with automatic language attributes and hreflang tags.
  * Author: <a href="https://so-wp.com">Pieter Bos</a>
- * Version: 1.5.7
+ * Version: 1.5.8
  * Requires at least: 5.0
  * Tested up to: 7.1
  * Requires PHP: 7.0
@@ -21,7 +21,7 @@
 // Don't load the plugin file directly
 defined( 'ABSPATH' ) || exit;
 
-define( 'SO_QMP_VERSION', '1.5.7' );
+define( 'SO_QMP_VERSION', '1.5.8' );
 
 /**
  * Enqueue admin scripts and styles.
@@ -324,31 +324,32 @@ add_action( 'wp_head', 'so_qmp_add_hreflang_tags', 1 );
  * Set the HTML lang attribute based on the current language.
  */
 function so_qmp_set_html_lang($output) {
-	$primary_lang = get_option('so_qmp_primary_lang');
+	$primary_lang   = get_option('so_qmp_primary_lang');
 	$secondary_lang = get_option('so_qmp_secondary_lang');
 
-	$current_lang_prefix = so_qmp_get_current_language_prefix();
-	$html_lang = ($current_lang_prefix === '/' . get_option('so_qmp_secondary_hreflang') . '/') ? $secondary_lang : $primary_lang;
+	$folder_id  = absint( get_option('so_qmp_language_folder_page') );
+	$current_id = get_queried_object_id();
 
-	// Debug information (commented out for production)
-	/*
-	error_log('Quick Multilingual Debug - Primary Lang: ' . $primary_lang);
-	error_log('Quick Multilingual Debug - Secondary Lang: ' . $secondary_lang);
-	error_log('Quick Multilingual Debug - Current Lang Prefix: ' . $current_lang_prefix);
-	error_log('Quick Multilingual Debug - Chosen Lang: ' . $html_lang);
-	*/
+	// On secondary language when current page IS the Language Folder Page
+	// or is a descendant of it (detected by post hierarchy, not URL string).
+	$is_secondary = false;
+	if ( $folder_id && $current_id ) {
+		$is_secondary = ( is_page( $folder_id ) || in_array( $folder_id, get_post_ancestors( $current_id ), true ) );
+	}
 
-	// Replace the entire lang attribute
-	$new_output = preg_replace('/lang="[^"]*"/', 'lang="' . esc_attr($html_lang) . '"', $output);
+	$html_lang = $is_secondary ? $secondary_lang : $primary_lang;
 
-	// If no lang attribute found, add it
-	if ($new_output === $output) {
-		$new_output = str_replace('<html', '<html lang="' . esc_attr($html_lang) . '"', $output);
+	// Replace the existing lang attribute.
+	$new_output = preg_replace('/lang="[^"]*"/', 'lang="' . esc_attr( $html_lang ) . '"', $output);
+
+	// If no lang attribute found, append one defensively.
+	if ( $new_output === $output ) {
+		$new_output = $output . ' lang="' . esc_attr( $html_lang ) . '"';
 	}
 
 	return $new_output;
 }
-// Use a high priority to ensure this runs after WordPress core
+// Use a high priority to ensure this runs after WordPress core.
 add_filter('language_attributes', 'so_qmp_set_html_lang', 100);
 
 /**
