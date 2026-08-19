@@ -80,7 +80,7 @@ final readonly class SettingsPage {
                             <td>
                                 <?php
                                 wp_dropdown_pages( [
-                                    'name'              => Config::OPT_FOLDER_PAGE,
+                                    'name'              => esc_attr( (string) Config::OPT_FOLDER_PAGE ),
                                     'selected'          => absint( get_option( Config::OPT_FOLDER_PAGE ) ),
                                     'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
                                     'option_none_value' => '0',
@@ -97,8 +97,8 @@ final readonly class SettingsPage {
                                     for ( $n = 1; $n <= Config::MAX_PAGE_MAPPINGS; $n++ ) {
                                         printf(
                                             '<option value="%1$d" %2$s>%1$d</option>',
-                                            $n,
-                                            selected( $current, $n, false )
+                                            intval( $n ),
+                                            wp_kses( selected( $current, $n, false ), [] )
                                         );
                                     }
                                     ?>
@@ -147,9 +147,9 @@ final readonly class SettingsPage {
                                 <td>
                                     <?php
                                     wp_dropdown_pages( [
-                                        'name'              => Config::option_key( $i ) . '[primary]',
-                                        'selected'          => $primary_page,
-                                        'exclude'           => esc_attr( implode( ',', array_map( 'absint', $exclude_pages ) ) ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Admin-only settings screen; excludes a small, bounded set of pages.
+                                        'name'              => esc_attr( Config::option_key( $i ) . '[primary]' ),
+                                        'selected'          => absint( $primary_page ),
+                                        'exclude'           => implode( ',', array_map( 'absint', $exclude_pages ) ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                                         'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
                                         'option_none_value' => '0',
                                     ] );
@@ -158,9 +158,9 @@ final readonly class SettingsPage {
                                 <td>
                                     <?php
                                     wp_dropdown_pages( [
-                                        'name'              => Config::option_key( $i ) . '[secondary]',
-                                        'selected'          => $secondary_page,
-                                        'child_of'          => $folder_id,
+                                        'name'              => esc_attr( Config::option_key( $i ) . '[secondary]' ),
+                                        'selected'          => absint( $secondary_page ),
+                                        'child_of'          => absint( $folder_id ),
                                         'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
                                         'option_none_value' => '0',
                                     ] );
