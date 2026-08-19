@@ -104,7 +104,7 @@ Plugin Settings page (two tabs) and frontend output.
 ### 2.0.0
 
 * date: August 19, 2026
-* Note: Major refactor. Minimum PHP raised to 8.2. No breaking changes to stored settings; existing `so_qmp_*` options are preserved.
+* Note: Major refactor. Minimum WP raised to 6.2. Minimum PHP raised to 8.2. No breaking changes to stored settings; existing `so_qmp_*` options are preserved.
 * New: OOP architecture under the `SOWP\QuickMultilingual` namespace with split class files in `src/`.
 * New: Canonical URL output for mapped pages (`<link rel="canonical">`), removing WordPress core `rel_canonical` on those pages to prevent duplicate tags.
 * New: Activation guard deactivates the plugin and shows an admin notice when PHP < 8.2 or WordPress < 6.2.
