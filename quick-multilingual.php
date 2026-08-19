@@ -395,7 +395,7 @@ add_action( 'template_redirect', 'so_qmp_redirect_language_folder_to_secondary_h
  */
 function so_qmp_add_settings_link($links) {
 	$settings_link = '<a href="' . esc_url(admin_url('options-general.php?page=quick-multilingual')) . '">' . esc_html__('Settings', 'quick-multilingual') . '</a>';
-	array_push($links, $settings_link);
+	array_unshift( $links, $settings_link );
 	return $links;
 }
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'so_qmp_add_settings_link');
