@@ -2,10 +2,10 @@
 
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
-###### Last updated on September 26, 2024
-###### Development version 1.5.5
-###### requires at least WordPress 4.9
-###### tested up to WordPress 6.6
+###### Last updated on August 19, 2026
+###### Development version 2.0.0
+###### requires at least WordPress 6.2
+###### tested up to WordPress 7.1
 ###### Author: [Pieter Bos](https://github.com/senlin)
 
 Quick Multilingual allows you to create multilingual brochure sites on WordPress with automatic language attributes and hreflang tags.
@@ -18,6 +18,7 @@ Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-f
 
 * **Adjust HTML Lang Attribute:** Dynamically set the `lang` attribute in the HTML tag based on the current language.
 * **Custom Hreflang Tags:** Define custom `hreflang` tags for primary and secondary languages.
+* **Canonical link:** automatically set.
 * **Language Folder Redirection:** Redirect the parent language folder to the secondary language homepage.
 * **Mapping:** map up to 4 pages of the primary language to their translation in the secondary language.
 * **Easy Configuration:** User-friendly settings page for managing language settings and redirections.
@@ -99,6 +100,42 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 2.0.0
+
+* date: August 19, 2026
+* Note: Major refactor. Minimum PHP raised to 8.2. No breaking changes to stored settings; existing `so_qmp_*` options are preserved.
+* New: OOP architecture under the `SOWP\QuickMultilingual` namespace with split class files in `src/`.
+* New: Canonical URL output for mapped pages (`<link rel="canonical">`), removing WordPress core `rel_canonical` on those pages to prevent duplicate tags.
+* New: Activation guard deactivates the plugin and shows an admin notice when PHP < 8.2 or WordPress < 6.2.
+* Changed: Minimum PHP requirement raised from 7.0 to 8.2.
+* Changed: Minimum WP requirement raised from 5.0 to 6.2
+* Changed: Page mapping loop now follows the tier limit (`MAX_PAGE_MAPPINGS = 4`) instead of a hardcoded 4, preparing for the Premium tier.
+* Developer: Lite/Premium roadmap; tier limits centralised in `Config`. Settings page markup kept compatible with the existing `admin.js` (`.nav-tab`, `.so_qmp-tab-content`, `#so_qmp_number_of_pages`, `#page-translations-table`, `.page-mapping-row`).
+
+### 1.5.8
+
+* date: August 19, 2026
+* Fixed: HTML lang attribute now correctly switches to the secondary language based on the page hierarchy instead of unreliable URL string matching.
+
+### 1.5.7
+
+* date: August 18, 2026
+* Fixed: Escaped all admin option outputs and dropdowns to satisfy PHPCS/PCP checks and prevent unescaped output vulnerabilities.
+* Fixed: Added explicit casting with absint() for stored page IDs (for example so_qmp_language_folder_page) to ensure integer values are used where expected.
+* Fixed: Added translators comment for the "Page %d" label to clarify the placeholder meaning.
+* Changed: Replaced hardcoded script version with SO_QMP_VERSION and bumped asset versioning to improve cache-busting for admin.js and admin.css.
+* Fixed: Added a targeted PHPCS ignore for an admin-only exclude usage in wp_dropdown_pages() to address a WordPress VIP performance warning (settings screen; excludes a small, bounded set of pages).
+* Changed: Prefixed uninstall.php file-scope variables to follow plugin naming conventions and remove PCP naming warnings.
+* Notes: No breaking changes. Behaviour is unchanged; changes are defensive and to satisfy code-quality checks.
+* tested up to WP 7.1
+
+### 1.5.6
+
+* date: April 27, 2025
+* removed redundant `load_plugin_textdomain()` function and increased min required WP version
+* tested up to WP 6.8
+
 
 ### 1.5.5
 

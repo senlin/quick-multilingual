@@ -1,0 +1,27 @@
+.so_qmp-tab-content {
+	margin-top: 20px;
+}
+
+.nav-tab-wrapper {
+	margin-bottom: 20px;
+}
+
+#page-translations-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#page-translations-table th,
+#page-translations-table td {
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+#page-translations-table th {
+	background-color: #f1f1f1;
+	font-weight: bold;
+}
+
+.page-mapping-row select {
+	width: 100%;
+}

@@ -1,38 +1,31 @@
 <?php
 /**
- * Uninstall Quick Multilingual
+ * Uninstall Quick Multilingual.
  *
- * @package Quick_Multilingual
+ * Removes all plugin options from the wp_options table. Option keys mirror
+ * SOWP\QuickMultilingual\Config; keep this list in sync when new options are added.
+ *
+ * @package SOWP\QuickMultilingual
  */
 
-// If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// Define the option names to be deleted
-$options = array(
+$so_qmp_options = [
 	'so_qmp_primary_lang',
 	'so_qmp_secondary_lang',
 	'so_qmp_primary_hreflang',
 	'so_qmp_secondary_hreflang',
 	'so_qmp_language_folder_page',
-	'so_qmp_number_of_pages'
-);
+	'so_qmp_number_of_pages',
+];
 
-// Delete the individual options
-foreach ( $options as $option ) {
-	delete_option( $option );
+foreach ( $so_qmp_options as $so_qmp_option ) {
+	delete_option( $so_qmp_option );
 }
 
-// Delete the page mapping options
-for ( $i = 1; $i <= 4; $i++ ) {
-	delete_option( 'so_qmp_page_mapping_' . $i );
+// Lite tier supports up to 4 page mappings; delete each registered mapping.
+for ( $so_qmp_i = 1; $so_qmp_i <= 4; $so_qmp_i++ ) {
+	delete_option( 'so_qmp_page_mapping_' . $so_qmp_i );
 }
-
-// If you want to remove all options with the 'so_qmp_' prefix, you can use this code instead:
-// However, be cautious as it might remove options that you didn't intend to remove if other plugins use a similar prefix.
-/*
-global $wpdb;
-$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'so_qmp_%'" );
-*/
