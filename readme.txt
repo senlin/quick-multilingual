@@ -2,10 +2,10 @@
 Contributors: senlin
 Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
-Requires at least: 5.0
+Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.5.8
-Requires PHP: 7.0
+Stable tag: 2.0.0
+Requires PHP: 8.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,7 @@ Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-f
 
 * **Adjust HTML Lang Attribute:** Dynamically set the `lang` attribute in the HTML tag based on the current language.
 * **Custom Hreflang Tags:** Define custom hreflang codes for primary and secondary languages.
+* **Canonical link:** automatically set.
 * **Language Folder Redirection:** Redirect the parent language folder to the secondary language homepage.
 * **Mapping:** map up to 4 pages of the primary language to their translation in the secondary language.
 * **Easy Configuration:** User-friendly settings page for managing language settings and redirections.
@@ -69,6 +70,18 @@ Please open an issue on [Github](https://github.com/senlin/quick-multilingual/is
 4. Frontend sourcecode secondary language
 
 == Changelog ==
+
+= 2.0.0 =
+
+* date: August 19, 2026
+* Note: Major refactor. Minimum WP raised to 6.2. Minimum PHP raised to 8.2. No breaking changes to stored settings; existing `so_qmp_*` options are preserved.
+* New: OOP architecture under the `SOWP\QuickMultilingual` namespace with split class files in `src/`.
+* New: Canonical URL output for mapped pages (`<link rel="canonical">`), removing WordPress core `rel_canonical` on those pages to prevent duplicate tags.
+* New: Activation guard deactivates the plugin and shows an admin notice when PHP < 8.2 or WordPress < 6.2.
+* Changed: Minimum PHP requirement raised from 7.0 to 8.2.
+* Changed: Minimum WP requirement raised from 5.0 to 6.2.
+* Changed: Page mapping loop now follows the tier limit (`MAX_PAGE_MAPPINGS = 4`) instead of a hardcoded 4, preparing for the Premium tier.
+* Developer: Lite/Premium roadmap; tier limits centralised in `Config`. Settings page markup kept compatible with the existing `admin.js` (`.nav-tab`, `.so_qmp-tab-content`, `#so_qmp_number_of_pages`, `#page-translations-table`, `.page-mapping-row`).
 
 = 1.5.8 =
 

@@ -3,8 +3,8 @@
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
 ###### Last updated on August 19, 2026
-###### Development version 1.5.8
-###### requires at least WordPress 5.0
+###### Development version 2.0.0
+###### requires at least WordPress 6.2
 ###### tested up to WordPress 7.1
 ###### Author: [Pieter Bos](https://github.com/senlin)
 
@@ -18,6 +18,7 @@ Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-f
 
 * **Adjust HTML Lang Attribute:** Dynamically set the `lang` attribute in the HTML tag based on the current language.
 * **Custom Hreflang Tags:** Define custom `hreflang` tags for primary and secondary languages.
+* **Canonical link:** automatically set.
 * **Language Folder Redirection:** Redirect the parent language folder to the secondary language homepage.
 * **Mapping:** map up to 4 pages of the primary language to their translation in the secondary language.
 * **Easy Configuration:** User-friendly settings page for managing language settings and redirections.
@@ -100,6 +101,18 @@ Plugin Settings page (two tabs) and frontend output.
 
 ## Changelog
 
+### 2.0.0
+
+* date: August 19, 2026
+* Note: Major refactor. Minimum WP raised to 6.2. Minimum PHP raised to 8.2. No breaking changes to stored settings; existing `so_qmp_*` options are preserved.
+* New: OOP architecture under the `SOWP\QuickMultilingual` namespace with split class files in `src/`.
+* New: Canonical URL output for mapped pages (`<link rel="canonical">`), removing WordPress core `rel_canonical` on those pages to prevent duplicate tags.
+* New: Activation guard deactivates the plugin and shows an admin notice when PHP < 8.2 or WordPress < 6.2.
+* Changed: Minimum PHP requirement raised from 7.0 to 8.2.
+* Changed: Minimum WP requirement raised from 5.0 to 6.2
+* Changed: Page mapping loop now follows the tier limit (`MAX_PAGE_MAPPINGS = 4`) instead of a hardcoded 4, preparing for the Premium tier.
+* Developer: Lite/Premium roadmap; tier limits centralised in `Config`. Settings page markup kept compatible with the existing `admin.js` (`.nav-tab`, `.so_qmp-tab-content`, `#so_qmp_number_of_pages`, `#page-translations-table`, `.page-mapping-row`).
+
 ### 1.5.8
 
 * date: August 19, 2026
@@ -122,6 +135,7 @@ Plugin Settings page (two tabs) and frontend output.
 * date: April 27, 2025
 * removed redundant `load_plugin_textdomain()` function and increased min required WP version
 * tested up to WP 6.8
+
 
 ### 1.5.5
 
