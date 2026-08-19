@@ -32,8 +32,8 @@ function so_qmp_enqueue_admin_scripts($hook) {
 		return;
 	}
 
-	wp_enqueue_script('so_qmp_admin_script', plugins_url('js/admin.js', __FILE__), array('jquery'), '1.0', true);
-	wp_enqueue_style('so_qmp_admin_style', plugins_url('css/admin.css', __FILE__));
+	wp_enqueue_script('so_qmp_admin_script', plugins_url('js/admin.js', __FILE__), array('jquery'), SO_QMP_VERSION, true);
+	wp_enqueue_style( 'so_qmp_admin_style', plugins_url( 'css/admin.css', __FILE__ ), array(), SO_QMP_VERSION );
 
 	// Localize the script with new data
 	$translation_array = array(
@@ -150,9 +150,8 @@ function so_qmp_options_page_html() {
 						<td>
 							<?php
 							wp_dropdown_pages( array(
-								'name'              => 'so_qmp_page_mapping_' . absint( $i ) . '[primary]',
-								'selected'          => absint( $primary_page ),
-								'exclude'           => esc_attr( implode( ',', array_map( 'absint', $exclude_pages ) ) ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Admin-only settings screen; excludes a small, bounded set of pages.
+								'name'              => 'so_qmp_language_folder_page',
+								'selected'          => absint( get_option( 'so_qmp_language_folder_page' ) ),
 								'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
 								'option_none_value' => '0',
 							) );
@@ -214,7 +213,7 @@ function so_qmp_options_page_html() {
 									wp_dropdown_pages( array(
 										'name'              => 'so_qmp_page_mapping_' . absint( $i ) . '[primary]',
 										'selected'          => absint( $primary_page ),
-										'exclude'           => esc_attr( implode( ',', array_map( 'absint', $exclude_pages ) ) ),
+										'exclude'           => esc_attr( implode( ',', array_map( 'absint', $exclude_pages ) ) ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Admin-only settings screen; excludes a small, bounded set of pages.
 										'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
 										'option_none_value' => '0',
 									) );
