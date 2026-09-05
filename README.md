@@ -105,8 +105,6 @@ Plugin Settings page (two tabs) and frontend output.
 
 ### 2.0.3
 
-= 2.0.3 =
-
 * date: September 5, 2026
 * Added: "Number of Languages" selector (3–20) at the top of the General Settings tab, shown faded/disabled with a "Coming Soon" overlay; it will be enabled by the upcoming QML Premium addon.
 * Changed: General Settings tab now groups the HTML lang attribute and hreflang fields per language (Primary Language / Secondary Language rows). Option keys unchanged; stored settings are unaffected.
