@@ -3,7 +3,7 @@
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
 ###### Last updated on September 5, 2026
-###### Development version 2.0.1
+###### Development version 2.0.2
 ###### requires at least WordPress 6.2
 ###### tested up to WordPress 7.1
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -100,6 +100,11 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 2.0.2
+
+* date: September 5, 2026
+* Fixed: silenced Plugin Check prefix warnings on the uninstall.php helper variables and the so_qmp filter names (false positives; the sniffer derives its expected prefix from the plugin name).
 
 ### 2.0.1
 

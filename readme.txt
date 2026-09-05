@@ -4,7 +4,7 @@ Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 8.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,6 +70,11 @@ Please open an issue on [Github](https://github.com/senlin/quick-multilingual/is
 4. Frontend sourcecode secondary language
 
 == Changelog ==
+
+= 2.0.2 =
+
+* date: September 5, 2026
+* Fixed: silenced Plugin Check prefix warnings on the uninstall.php helper variables and the so_qmp filter names (false positives; the sniffer derives its expected prefix from the plugin name).
 
 = 2.0.1 =
 

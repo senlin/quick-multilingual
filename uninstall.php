@@ -12,7 +12,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-$so_qmp_options = [
+$so_qmp_options = [ // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- so_qmp is this plugin's unique prefix.
 	'so_qmp_primary_lang',
 	'so_qmp_secondary_lang',
 	'so_qmp_primary_hreflang',
@@ -21,11 +21,11 @@ $so_qmp_options = [
 	'so_qmp_number_of_pages',
 ];
 
-foreach ( $so_qmp_options as $so_qmp_option ) {
+foreach ( $so_qmp_options as $so_qmp_option ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	delete_option( $so_qmp_option );
 }
 
 // Lite tier supports up to 4 page mappings; delete each registered mapping.
-for ( $so_qmp_i = 1; $so_qmp_i <= 4; $so_qmp_i++ ) {
+for ( $so_qmp_i = 1; $so_qmp_i <= 4; $so_qmp_i++ ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	delete_option( 'so_qmp_page_mapping_' . $so_qmp_i );
 }

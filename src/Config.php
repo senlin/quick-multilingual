@@ -38,16 +38,19 @@ final readonly class Config {
 
     /** Current feature tier. Addons override via the so_qmp/tier filter. */
     public static function tier(): string {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- so_qmp is this plugin's unique prefix; the sniffer derives its expected prefix from the plugin name.
         return (string) apply_filters( 'so_qmp/tier', self::TIER );
     }
 
     /** Max languages for the current tier. Addons override via so_qmp/max_languages. */
     public static function max_languages(): int {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- so_qmp is this plugin's unique prefix; the sniffer derives its expected prefix from the plugin name.
         return (int) apply_filters( 'so_qmp/max_languages', self::MAX_LANGUAGES );
     }
 
     /** Max page mappings for the current tier. Addons override via so_qmp/max_page_mappings. */
     public static function max_page_mappings(): int {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- so_qmp is this plugin's unique prefix; the sniffer derives its expected prefix from the plugin name.
         return (int) apply_filters( 'so_qmp/max_page_mappings', self::MAX_PAGE_MAPPINGS );
     }
 }
