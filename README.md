@@ -2,6 +2,8 @@
 
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
+> **Note:** The automated [PluginTests.com](https://plugintests.com/plugins/wporg/quick-multilingual/latest) smoke test currently runs on PHP 8.1.12. Quick Multilingual requires PHP 8.2 or higher, so its activation test may report a failure on that service even though the plugin is tested against its supported PHP version.
+
 ###### Last updated on September 5, 2026
 ###### Development version 2.0.3
 ###### requires at least WordPress 6.2
