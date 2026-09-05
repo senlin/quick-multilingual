@@ -4,7 +4,7 @@ Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 Requires PHP: 8.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,6 +70,12 @@ Please open an issue on [Github](https://github.com/senlin/quick-multilingual/is
 4. Frontend sourcecode secondary language
 
 == Changelog ==
+
+= 2.0.3 =
+
+* date: September 5, 2026
+* Added: "Number of Languages" selector (3–20) at the top of the General Settings tab, shown faded/disabled with a "Coming Soon" overlay; it will be enabled by the upcoming QML Premium addon.
+* Changed: General Settings tab now groups the HTML lang attribute and hreflang fields per language (Primary Language / Secondary Language rows). Option keys unchanged; stored settings are unaffected.
 
 = 2.0.2 =
 
