@@ -35,4 +35,19 @@ final readonly class Config {
     public static function option_key( int $index ): string {
         return sprintf( self::OPT_PAGE_MAPPING_FMT, $index );
     }
+
+    /** Current feature tier. Addons override via the so_qmp/tier filter. */
+    public static function tier(): string {
+        return (string) apply_filters( 'so_qmp/tier', self::TIER );
+    }
+
+    /** Max languages for the current tier. Addons override via so_qmp/max_languages. */
+    public static function max_languages(): int {
+        return (int) apply_filters( 'so_qmp/max_languages', self::MAX_LANGUAGES );
+    }
+
+    /** Max page mappings for the current tier. Addons override via so_qmp/max_page_mappings. */
+    public static function max_page_mappings(): int {
+        return (int) apply_filters( 'so_qmp/max_page_mappings', self::MAX_PAGE_MAPPINGS );
+    }
 }

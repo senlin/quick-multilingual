@@ -56,10 +56,12 @@ final readonly class MappingService {
      * @return list<array{primary?: int, secondary?: int}>
      */
     public function all_rows(): array {
-        $rows = [];
-        for ( $i = 1; $i <= Config::MAX_PAGE_MAPPINGS; $i++ ) {
+        $rows   = [];
+        $stored = absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
+        $limit  = min( max( $stored, 1 ), Config::max_page_mappings() );
+        for ( $i = 1; $i <= $limit; $i++ ) {
             $row = get_option( Config::option_key( $i ) );
-            if ( is_array( $row ) ) {
+            if ( is_array( $row ) && ! empty( $row ) ) {
                 $rows[] = $row;
             }
         }

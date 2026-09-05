@@ -18,8 +18,9 @@ final readonly class HeadTags {
     ) {}
 
     /**
-     * Emit hreflang alternates and x-default for mapped pages, with a
-     * single-self-referencing fallback for unmapped pages.
+     * Emit hreflang alternates and x-default for mapped pages.
+     * Unmapped pages emit nothing: without a mapping there is no language
+     * relationship to declare.
      */
     public function hreflang(): void {
         $primary_href   = get_option( Config::OPT_PRIMARY_HREFLANG );
@@ -54,14 +55,7 @@ final readonly class HeadTags {
             return;
         }
 
-        // Non-mapped page: minimal self-referencing alternate based on URL prefix.
-        $is_secondary_prefix = '' !== $this->resolver->current_language_prefix();
-        printf(
-            '<link rel="alternate" hreflang="%s" href="%s" />' . PHP_EOL,
-            esc_attr( (string) ( $is_secondary_prefix ? $secondary_href : $primary_href ) ),
-            esc_url( $current_url )
-        );
-        printf( '<link rel="alternate" hreflang="x-default" href="%s" />' . PHP_EOL, esc_url( $current_url ) );
+        // Unmapped page: no mapping, no hreflang output. The mapping is the source of truth.
     }
 
     /**

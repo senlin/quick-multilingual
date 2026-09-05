@@ -94,7 +94,7 @@ final readonly class SettingsPage {
                                 <select id="<?php echo esc_attr( Config::OPT_NUMBER_OF_PAGES ); ?>" name="<?php echo esc_attr( Config::OPT_NUMBER_OF_PAGES ); ?>">
                                     <?php
                                     $current = absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
-                                    for ( $n = 1; $n <= Config::MAX_PAGE_MAPPINGS; $n++ ) {
+                                    for ( $n = 1; $n <= Config::max_page_mappings(); $n++ ) {
                                         printf(
                                             '<option value="%1$d" %2$s>%1$d</option>',
                                             intval( $n ),

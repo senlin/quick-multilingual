@@ -4,7 +4,7 @@ Donate link: https://so-wp.com/donations/
 Tags: hreflang, language, multilingual, SEO, internationalization
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 Requires PHP: 8.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,6 +70,14 @@ Please open an issue on [Github](https://github.com/senlin/quick-multilingual/is
 4. Frontend sourcecode secondary language
 
 == Changelog ==
+
+= 2.0.1 =
+
+* date: September 5, 2026
+* Added: filter-aware accessors for tier limits (so_qmp/tier, so_qmp/max_languages, so_qmp/max_page_mappings) in preparation for the Premium addon.
+* Changed: the html lang attribute is now driven by the plugin's page mappings instead of page hierarchy; pages removed from the mapping fall back to the primary language.
+* Fixed: unmapped pages no longer output self-referencing hreflang and x-default links.
+* Fixed: mapping rows beyond the stored "Number of Pages to Map" are ignored on the frontend and deleted from the database when the count is reduced.
 
 = 2.0.0 =
 

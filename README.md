@@ -2,8 +2,8 @@
 
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
-###### Last updated on August 19, 2026
-###### Development version 2.0.0
+###### Last updated on September 5, 2026
+###### Development version 2.0.1
 ###### requires at least WordPress 6.2
 ###### tested up to WordPress 7.1
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -100,6 +100,14 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 2.0.1
+
+* date: September 5, 2026
+* Added: filter-aware accessors for tier limits (so_qmp/tier, so_qmp/max_languages, so_qmp/max_page_mappings) in preparation for the Premium addon.
+* Changed: the html lang attribute is now driven by the plugin's page mappings instead of page hierarchy; pages removed from the mapping fall back to the primary language.
+* Fixed: unmapped pages no longer output self-referencing hreflang and x-default links.
+* Fixed: mapping rows beyond the stored "Number of Pages to Map" are ignored on the frontend and deleted from the database when the count is reduced.
 
 ### 2.0.0
 

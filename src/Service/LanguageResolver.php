@@ -11,16 +11,36 @@ use SOWP\QuickMultilingual\Config;
 final readonly class LanguageResolver {
 
     /**
-     * True when the current page is the language folder page or a descendant of it.
+     * True when the plugin itself designates the current page as secondary:
+     * the language folder page, or the secondary side of an active mapping row.
+     * Page hierarchy is intentionally ignored; the mapping is the source of truth.
      */
     public function is_secondary_context(): bool {
-        $folder_id = absint( get_option( Config::OPT_FOLDER_PAGE ) );
-        $current   = get_queried_object_id();
-        if ( ! $folder_id || ! $current ) {
+        $current = (int) get_queried_object_id();
+        if ( ! $current ) {
             return false;
         }
-        return is_page( $folder_id )
-            || in_array( $folder_id, get_post_ancestors( $current ), true );
+
+        // The language folder page itself stays secondary.
+        $folder_id = absint( get_option( Config::OPT_FOLDER_PAGE ) );
+        if ( $folder_id && is_page( $folder_id ) ) {
+            return true;
+        }
+
+        // Secondary only when mapped as the secondary side of an active row.
+        $stored = absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
+        $limit  = min( max( $stored, 1 ), Config::max_page_mappings() );
+        for ( $i = 1; $i <= $limit; $i++ ) {
+            $row = get_option( Config::option_key( $i ) );
+            if (
+                is_array( $row )
+                && ! empty( $row['secondary'] )
+                && absint( $row['secondary'] ) === $current
+            ) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
