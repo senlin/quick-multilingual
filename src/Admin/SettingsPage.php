@@ -42,7 +42,7 @@ final readonly class SettingsPage {
             </h2>
 
             <div id="general-settings" class="so_qmp-tab-content">
-                <h2><?php
+                <p class="so_qmp-lang-ref-link"><?php
                     printf(
                         wp_kses(
                             /* translators: %s: URL to lang attributes gist */
@@ -51,7 +51,7 @@ final readonly class SettingsPage {
                         ),
                         'https://gist.github.com/JamieMason/3748498'
                     );
-                ?></h2>
+                ?></p>
 
                 <form method="post" action="options.php">
                     <?php
@@ -74,7 +74,15 @@ final readonly class SettingsPage {
                                         }
                                         ?>
                                     </select>
-                                    <span class="so_qmp-premium-overlay"><?php esc_html_e( 'Coming Soon', 'quick-multilingual' ); ?></span>
+                                    <span class="so_qmp-premium-overlay">
+                                        <strong><?php esc_html_e( 'Quick Multilingual Premium', 'quick-multilingual' ); ?></strong>
+                                        <span><?php esc_html_e( 'Unlock up to 20 languages and 100 page mappings.', 'quick-multilingual' ); ?></span>
+                                        <?php
+                                        // TODO: Replace '#' with the Premium purchase URL once the store is live.
+                                        // TODO: Replace 'from $X' with the real lowest price before release.
+                                        ?>
+                                        <a href="#" class="so_qmp-upgrade-link"><?php esc_html_e( 'Get Premium', 'quick-multilingual' ); ?></a>
+                                    </span>
                                 </span>
                             </td>
                         </tr>

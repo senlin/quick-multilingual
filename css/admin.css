@@ -61,3 +61,9 @@
 .so_qmp-field-label:not(:first-child) {
 	margin-top: 10px;
 }
+
+/* Lang-reference paragraph styled to match h2 */
+p.so_qmp-lang-ref-link {
+    font-size: 1.3em;
+    font-weight: 600;
+}
