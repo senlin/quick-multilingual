@@ -4,7 +4,7 @@
  * Description:       Quick Multilingual allows you to create multilingual brochure sites on WordPress with automatic language attributes, hreflang tags and canonical URLs.
  * Author:            Pieter Bos
  * Author URI:        https://so-wp.com
- * Version:            2.0.2
+ * Version:            2.0.3
  * Requires at least:  6.2
  * Tested up to:       7.1
  * Requires PHP:       8.2
@@ -22,7 +22,7 @@
 // Don't load the plugin file directly.
 defined( 'ABSPATH' ) || exit;
 
-define( 'SO_QMP_VERSION', '2.0.2' );
+define( 'SO_QMP_VERSION', '2.0.3' );
 define( 'SO_QMP_FILE', __FILE__ );
 define( 'SO_QMP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SO_QMP_URL', plugin_dir_url( __FILE__ ) );

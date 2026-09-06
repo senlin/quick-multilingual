@@ -2,8 +2,10 @@
 
 [![plugin version](https://img.shields.io/wordpress/plugin/v/quick-multilingual)](https://wordpress.org/plugins/quick-multilingual) [![WP compatibility](https://plugintests.com/plugins/wporg/quick-multilingual/wp-badge.svg)](https://plugintests.com/plugins/wporg/quick-multilingual/latest) [![PHP compatibility](https://plugintests.com/plugins/quick-multilingual/php-badge.svg)](https://plugintests.com/plugins/quick-multilingual/latest)
 
+> **Note:** The automated [PluginTests.com](https://plugintests.com/plugins/wporg/quick-multilingual/latest) smoke test currently runs on PHP 8.1.12. Quick Multilingual requires PHP 8.2 or higher, so its activation test may report a failure on that service even though the plugin is tested against its supported PHP version.
+
 ###### Last updated on September 5, 2026
-###### Development version 2.0.2
+###### Development version 2.0.3
 ###### requires at least WordPress 6.2
 ###### tested up to WordPress 7.1
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -100,6 +102,12 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 2.0.3
+
+* date: September 5, 2026
+* Added: "Number of Languages" selector (3–20) at the top of the General Settings tab, shown faded/disabled with a "Coming Soon" overlay; it will be enabled by the upcoming QML Premium addon.
+* Changed: General Settings tab now groups the HTML lang attribute and hreflang fields per language (Primary Language / Secondary Language rows). Option keys unchanged; stored settings are unaffected.
 
 ### 2.0.2
 

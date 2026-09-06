@@ -32,6 +32,9 @@ final readonly class Config {
     /** Maximum number of page mappings supported by this tier (Premium: >4). */
     public const MAX_PAGE_MAPPINGS = 4;
 
+    /** Hard ceiling of the Premium "Number of Languages" selector. */
+    public const PREMIUM_MAX_LANGUAGES = 20;
+
     public static function option_key( int $index ): string {
         return sprintf( self::OPT_PAGE_MAPPING_FMT, $index );
     }

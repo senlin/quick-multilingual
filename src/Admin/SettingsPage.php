@@ -60,48 +60,73 @@ final readonly class SettingsPage {
                     ?>
                     <table class="form-table" role="presentation">
                         <tr>
-                            <th scope="row"><?php esc_html_e( 'HTML lang attribute primary language', 'quick-multilingual' ); ?></th>
-                            <td><input type="text" name="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_PRIMARY_LANG ) ); ?>" class="regular-text" /></td>
+                            <th scope="row"><label for="so_qmp_number_of_languages"><?php esc_html_e( 'Number of Languages', 'quick-multilingual' ); ?></label></th>
+                            <td>
+                                <span class="so_qmp-premium-field">
+                                    <select id="so_qmp_number_of_languages" class="so_qmp-faded" disabled="disabled">
+                                        <?php
+                                        for ( $n = 3; $n <= Config::PREMIUM_MAX_LANGUAGES; $n++ ) {
+                                            printf(
+                                                '<option value="%1$d" %2$s>%1$d</option>',
+                                                intval( $n ),
+                                                wp_kses( selected( 3, $n, false ), [] )
+                                            );
+                                        }
+                                        ?>
+                                    </select>
+                                    <span class="so_qmp-premium-overlay"><?php esc_html_e( 'Coming Soon', 'quick-multilingual' ); ?></span>
+                                </span>
+                            </td>
                         </tr>
                         <tr>
-                            <th scope="row"><?php esc_html_e( 'HTML lang attribute secondary language', 'quick-multilingual' ); ?></th>
-                            <td><input type="text" name="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_SECONDARY_LANG ) ); ?>" class="regular-text" /></td>
+                            <th scope="row"><?php esc_html_e( 'Primary Language', 'quick-multilingual' ); ?></th>
+                            <td>
+                                <label class="so_qmp-field-label" for="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></label>
+                                <input type="text" id="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>" name="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_PRIMARY_LANG ) ); ?>" class="regular-text" />
+                            </td>
+                            <td>
+                                <label class="so_qmp-field-label" for="<?php echo esc_attr( Config::OPT_PRIMARY_HREFLANG ); ?>"><?php esc_html_e( 'Hreflang', 'quick-multilingual' ); ?></label>
+                                <input type="text" id="<?php echo esc_attr( Config::OPT_PRIMARY_HREFLANG ); ?>" name="<?php echo esc_attr( Config::OPT_PRIMARY_HREFLANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_PRIMARY_HREFLANG ) ); ?>" class="regular-text" />
+                            </td>
                         </tr>
                         <tr>
-                            <th scope="row"><?php esc_html_e( 'Hreflang primary language', 'quick-multilingual' ); ?></th>
-                            <td><input type="text" name="<?php echo esc_attr( Config::OPT_PRIMARY_HREFLANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_PRIMARY_HREFLANG ) ); ?>" class="regular-text" /></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?php esc_html_e( 'Hreflang secondary language', 'quick-multilingual' ); ?></th>
-                            <td><input type="text" name="<?php echo esc_attr( Config::OPT_SECONDARY_HREFLANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_SECONDARY_HREFLANG ) ); ?>" class="regular-text" /></td>
+                            <th scope="row"><?php esc_html_e( 'Secondary Language', 'quick-multilingual' ); ?></th>
+                            <td>
+                                <label class="so_qmp-field-label" for="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></label>
+                                <input type="text" id="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>" name="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_SECONDARY_LANG ) ); ?>" class="regular-text" />
+                            </td>
+                            <td>
+                                <label class="so_qmp-field-label" for="<?php echo esc_attr( Config::OPT_SECONDARY_HREFLANG ); ?>"><?php esc_html_e( 'Hreflang', 'quick-multilingual' ); ?></label>
+                                <input type="text" id="<?php echo esc_attr( Config::OPT_SECONDARY_HREFLANG ); ?>" name="<?php echo esc_attr( Config::OPT_SECONDARY_HREFLANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_SECONDARY_HREFLANG ) ); ?>" class="regular-text" />
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row"><?php esc_html_e( 'Language Folder Page', 'quick-multilingual' ); ?></th>
                             <td>
-                                <?php
-                                wp_dropdown_pages( [
-                                    'name'              => esc_attr( (string) Config::OPT_FOLDER_PAGE ),
-                                    'selected'          => absint( get_option( Config::OPT_FOLDER_PAGE ) ),
-                                    'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
-                                    'option_none_value' => '0',
-                                ] );
-                                ?>
+                            <?php
+                            wp_dropdown_pages( [
+                                'name'              => esc_attr( (string) Config::OPT_FOLDER_PAGE ),
+                                'selected'          => absint( get_option( Config::OPT_FOLDER_PAGE ) ),
+                                'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
+                                'option_none_value' => '0',
+                            ] );
+                            ?>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row"><?php esc_html_e( 'Number of Pages to Map', 'quick-multilingual' ); ?></th>
                             <td>
                                 <select id="<?php echo esc_attr( Config::OPT_NUMBER_OF_PAGES ); ?>" name="<?php echo esc_attr( Config::OPT_NUMBER_OF_PAGES ); ?>">
-                                    <?php
-                                    $current = absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
-                                    for ( $n = 1; $n <= Config::max_page_mappings(); $n++ ) {
-                                        printf(
-                                            '<option value="%1$d" %2$s>%1$d</option>',
-                                            intval( $n ),
-                                            wp_kses( selected( $current, $n, false ), [] )
-                                        );
-                                    }
-                                    ?>
+                                <?php
+                                $current = absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
+                                for ( $n = 1; $n <= Config::max_page_mappings(); $n++ ) {
+                                    printf(
+                                        '<option value="%1$d" %2$s>%1$d</option>',
+                                        intval( $n ),
+                                        wp_kses( selected( $current, $n, false ), [] )
+                                    );
+                                }
+                                ?>
                                 </select>
                             </td>
                         </tr>
