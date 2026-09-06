@@ -67,3 +67,133 @@ p.so_qmp-lang-ref-link {
     font-size: 1.3em;
     font-weight: 600;
 }
+
+/* -------------------------------------------------------
+   Page title with inline logo
+------------------------------------------------------- */
+.so_qmp-page-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.so_qmp-title-logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+/* -------------------------------------------------------
+   Two-column layout: main content + Premium sidebar
+------------------------------------------------------- */
+.so_qmp-content-with-sidebar {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.so_qmp-main-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* -------------------------------------------------------
+   Premium sidebar panel
+------------------------------------------------------- */
+.so_qmp-premium-sidebar {
+    flex: 0 0 240px;
+    width: 240px;
+}
+
+.so_qmp-sidebar-inner {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+.so_qmp-sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.so_qmp-sidebar-logo {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+}
+
+.so_qmp-sidebar-title {
+    font-weight: 600;
+    font-size: 0.95em;
+    line-height: 1.3;
+}
+
+.so_qmp-sidebar-features {
+    margin: 0 0 16px 0;
+    padding: 0 0 0 1.2em;
+}
+
+.so_qmp-sidebar-features li {
+    margin-bottom: 6px;
+    font-size: 0.9em;
+}
+
+.so_qmp-sidebar-btn {
+    display: block;
+    text-align: center;
+}
+
+/* -------------------------------------------------------
+   Inline Premium teaser (Number of Languages row)
+------------------------------------------------------- */
+.so_qmp-premium-teaser {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 12px;
+    vertical-align: middle;
+}
+
+.so_qmp-teaser-logo {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.so_qmp-teaser-text {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.so_qmp-teaser-text strong {
+    display: block;
+}
+
+.so_qmp-upgrade-btn .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+/* -------------------------------------------------------
+   Language table: N/A cell and lang-ref row
+------------------------------------------------------- */
+.so_qmp-na-cell {
+    vertical-align: middle;
+}
+
+.so_qmp-na {
+    color: #787c82;
+    font-style: italic;
+}
+
+.so_qmp-lang-ref-row td {
+    padding-top: 16px;
+    padding-bottom: 4px;
+    font-size: 0.95em;
+}
