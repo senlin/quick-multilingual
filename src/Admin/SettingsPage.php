@@ -38,7 +38,7 @@ final readonly class SettingsPage {
         <div class="wrap">
 
             <h1 class="so_qmp-page-title">
-                <img src="<?php echo esc_url( $images_url . 'qml-free-32.png' ); ?>"
+                <img src="<?php echo esc_url( $images_url . 'qml-free-64.png' ); ?>"
                      alt="<?php esc_attr_e( 'Quick Multilingual', 'quick-multilingual' ); ?>"
                      class="so_qmp-title-logo" />
                 <?php echo esc_html( get_admin_page_title() ); ?>
