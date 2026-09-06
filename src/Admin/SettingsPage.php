@@ -83,7 +83,7 @@ final readonly class SettingsPage {
                                             </select>
                                         </span>
                                         <span class="so_qmp-premium-teaser">
-                                            <img src="<?php echo esc_url( $images_url . 'qml-premium-24.png' ); ?>"
+                                            <img src="<?php echo esc_url( $images_url . 'qml-premium-48.png' ); ?>"
                                                  alt="<?php esc_attr_e( 'Quick Multilingual Premium', 'quick-multilingual' ); ?>"
                                                  class="so_qmp-teaser-logo" />
                                             <span class="so_qmp-teaser-text">
