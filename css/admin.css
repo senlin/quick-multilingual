@@ -184,7 +184,7 @@ p.so_qmp-lang-ref-link {
 ------------------------------------------------------- */
 .so_qmp_table.form-table th {
     padding: 15px 10px;
-	width: 150px;
+        width: 150px;
 }
 .so_qmp-na-cell {
     vertical-align: middle;
@@ -197,7 +197,7 @@ p.so_qmp-lang-ref-link {
 
 .so_qmp-lang-ref-row td {
     font-size: 1.2em;
-	font-style: italic;
+        font-style: italic;
     font-weight: 600;
 }
 
@@ -212,4 +212,96 @@ p.so_qmp-lang-ref-link {
 /* Push the Premium sidebar down */
 .so_qmp-premium-sidebar {
         margin-top: 170px;
+}
+
+
+
+/* -------------------------------------------------------
+   AJAX page picker (Page Translations tab + folder picker)
+------------------------------------------------------- */
+.so_qmp-page-picker {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+}
+
+.so_qmp-page-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 100;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.so_qmp-page-results li {
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.so_qmp-page-results li:hover,
+.so_qmp-page-results li[aria-selected="true"] {
+    background: #f0f6fc;
+    color: #2271b1;
+}
+
+.so_qmp-page-results .so_qmp-no-results {
+    color: #787c82;
+    cursor: default;
+    font-style: italic;
+}
+
+/* -------------------------------------------------------
+   Remove row button
+------------------------------------------------------- */
+.so_qmp-remove-cell {
+    width: 2em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.so_qmp-remove-row {
+    color: #b32d2e;
+    font-size: 1.4em;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.so_qmp-remove-row:hover {
+    color: #8a1f20;
+}
+
+/* -------------------------------------------------------
+   Add mapping row wrapper
+------------------------------------------------------- */
+.so_qmp-add-row-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+/* -------------------------------------------------------
+   Language switcher (Premium — Page Translations tab)
+------------------------------------------------------- */
+.so_qmp-lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-weight: 600;
 }

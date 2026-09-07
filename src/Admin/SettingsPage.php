@@ -61,6 +61,7 @@ final readonly class SettingsPage {
                             <?php
                             settings_fields( Config::OPTION_GROUP );
                             do_settings_sections( Config::OPTION_GROUP );
+                            $picker_uid = 0; // Incremented for each picker to ensure unique IDs
                             ?>
                             <table class="so_qmp_table form-table" role="presentation">
 
@@ -96,26 +97,6 @@ final readonly class SettingsPage {
                                                 <?php esc_html_e( 'Get Premium', 'quick-multilingual' ); ?>
                                             </a>
                                         </span>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">
-                                        <label for="<?php echo esc_attr( Config::OPT_NUMBER_OF_PAGES ); ?>"><?php esc_html_e( 'Number of Pages to Map', 'quick-multilingual' ); ?></label>
-                                    </th>
-                                    <td colspan="3">
-                                        <select id="<?php echo esc_attr( Config::OPT_NUMBER_OF_PAGES ); ?>" name="<?php echo esc_attr( Config::OPT_NUMBER_OF_PAGES ); ?>">
-                                            <?php
-                                            $current = absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
-                                            for ( $n = 1; $n <= Config::max_page_mappings(); $n++ ) {
-                                                printf(
-                                                    '<option value="%1$d" %2$s>%1$d</option>',
-                                                    intval( $n ),
-                                                    wp_kses( selected( $current, $n, false ), [] )
-                                                );
-                                            }
-                                            ?>
-                                        </select>
                                     </td>
                                 </tr>
 
@@ -169,13 +150,25 @@ final readonly class SettingsPage {
                                     </td>
                                     <td>
                                         <?php
-                                        wp_dropdown_pages( [
-                                            'name'              => esc_attr( (string) Config::OPT_FOLDER_PAGE ),
-                                            'selected'          => absint( get_option( Config::OPT_FOLDER_PAGE ) ),
-                                            'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
-                                            'option_none_value' => '0',
-                                        ] );
+                                        $folder_id = absint( get_option( Config::OPT_FOLDER_PAGE ) );
+                                        $folder_title = $folder_id ? get_the_title( $folder_id ) : '';
                                         ?>
+                                        <div class="so_qmp-page-picker" data-scope="primary">
+                                            <input type="text"
+                                                   class="so_qmp-page-search regular-text"
+                                                   placeholder="<?php esc_attr_e( 'Search pages…', 'quick-multilingual' ); ?>"
+                                                   value="<?php echo esc_attr( $folder_title ); ?>"
+                                                   autocomplete="off"
+                                                   aria-autocomplete="list"
+                                                   aria-controls="so_qmp-results-<?php echo esc_attr( (string) ++$picker_uid ); ?>">
+                                            <input type="hidden"
+                                                   name="<?php echo esc_attr( Config::OPT_FOLDER_PAGE ); ?>"
+                                                   value="<?php echo esc_attr( (string) $folder_id ); ?>">
+                                            <ul class="so_qmp-page-results"
+                                                id="so_qmp-results-<?php echo esc_attr( (string) $picker_uid ); ?>"
+                                                role="listbox"
+                                                hidden></ul>
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -185,69 +178,176 @@ final readonly class SettingsPage {
                     </div><!-- #general-settings -->
 
                     <div id="page-translations" class="so_qmp-tab-content" style="display:none;">
-                <h2><?php esc_html_e( 'Here you can map the pages of the primary language to the secondary language.', 'quick-multilingual' ); ?></h2>
-                <form method="post" action="options.php">
-                    <?php
-                    settings_fields( Config::OPTION_GROUP_MAP );
-                    do_settings_sections( Config::OPTION_GROUP_MAP );
-                    $number_of_pages = intval( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
-                    ?>
-                    <table class="form-table" id="page-translations-table" role="presentation">
-                        <thead>
-                            <tr>
-                                <th scope="col"><?php esc_html_e( 'Page', 'quick-multilingual' ); ?></th>
-                                <th scope="col"><?php esc_html_e( 'Primary Language Page', 'quick-multilingual' ); ?></th>
-                                <th scope="col"><?php esc_html_e( 'Secondary Language Page', 'quick-multilingual' ); ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        for ( $i = 1; $i <= $number_of_pages; $i++ ) {
-                            $row            = get_option( Config::option_key( $i ), [] );
-                            $primary_page   = isset( $row['primary'] ) ? absint( $row['primary'] ) : 0;
-                            $secondary_page = isset( $row['secondary'] ) ? absint( $row['secondary'] ) : 0;
+                        <h2><?php esc_html_e( 'Map primary language pages to secondary language pages.', 'quick-multilingual' ); ?></h2>
 
-                            $folder_id     = absint( get_option( Config::OPT_FOLDER_PAGE ) );
-                            $exclude_pages = [ $folder_id ];
-                            $children      = get_pages( [ 'child_of' => $folder_id ] );
-                            if ( is_array( $children ) ) {
-                                foreach ( $children as $child ) {
-                                    $exclude_pages[] = $child->ID;
-                                }
-                            }
-                            ?>
-                            <tr class="page-mapping-row">
-                                <td><?php echo esc_html( sprintf( /* translators: %d: page row number */ __( 'Page %d', 'quick-multilingual' ), $i ) ); ?></td>
-                                <td>
-                                    <?php
-                                    wp_dropdown_pages( [
-                                        'name'              => esc_attr( Config::option_key( $i ) . '[primary]' ),
-                                        'selected'          => absint( $primary_page ),
-                                        'exclude'           => implode( ',', array_map( 'absint', $exclude_pages ) ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
-                                        'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
-                                        'option_none_value' => '0',
-                                    ] );
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                    wp_dropdown_pages( [
-                                        'name'              => esc_attr( Config::option_key( $i ) . '[secondary]' ),
-                                        'selected'          => absint( $secondary_page ),
-                                        'child_of'          => absint( $folder_id ),
-                                        'show_option_none'  => esc_html__( '— Select —', 'quick-multilingual' ),
-                                        'option_none_value' => '0',
-                                    ] );
-                                    ?>
-                                </td>
-                            </tr>
-                            <?php
-                        }
+                        <?php
+                        // Language switcher — Premium only (conditional)
+                        if ( Config::max_languages() > 2 ) :
+                            // Future Premium implementation: render language switcher here
+                        endif;
                         ?>
-                        </tbody>
-                    </table>
-                    <?php submit_button(); ?>
-                </form>
+
+                        <form method="post" action="options.php">
+                            <?php
+                            settings_fields( Config::OPTION_GROUP_MAP );
+                            do_settings_sections( Config::OPTION_GROUP_MAP );
+                            $current_count = absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
+                            $folder_id     = absint( get_option( Config::OPT_FOLDER_PAGE ) );
+                            $picker_uid    = 0; // Incremented for each picker to ensure unique IDs
+                            ?>
+
+                            <!-- Row counter: JS keeps this in sync; submitted with the form -->
+                            <input type="hidden"
+                                   id="so_qmp-row-count"
+                                   name="<?php echo esc_attr( Config::OPT_NUMBER_OF_PAGES ); ?>"
+                                   value="<?php echo esc_attr( (string) $current_count ); ?>">
+
+                            <table class="form-table so_qmp_table"
+                                   id="page-translations-table"
+                                   role="presentation">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col"><?php esc_html_e( 'Primary Language Page', 'quick-multilingual' ); ?></th>
+                                        <th scope="col" id="so_qmp-secondary-col-header">
+                                            <?php esc_html_e( 'Secondary Language Page', 'quick-multilingual' ); ?>
+                                        </th>
+                                        <th scope="col" aria-label="<?php esc_attr_e( 'Remove', 'quick-multilingual' ); ?>"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    for ( $i = 1; $i <= $current_count; $i++ ) :
+                                        $row            = get_option( Config::option_key( $i ), [] );
+                                        $primary_id     = isset( $row['primary'] ) ? absint( $row['primary'] ) : 0;
+                                        $secondary_id   = isset( $row['secondary'] ) ? absint( $row['secondary'] ) : 0;
+                                        $primary_title  = $primary_id ? get_the_title( $primary_id ) : '';
+                                        $secondary_title = $secondary_id ? get_the_title( $secondary_id ) : '';
+                                    ?>
+                                    <tr class="page-mapping-row" data-row="<?php echo esc_attr( (string) $i ); ?>">
+                                        <td><?php echo esc_html( (string) $i ); ?></td>
+                                        <td>
+                                            <div class="so_qmp-page-picker" data-scope="primary">
+                                                <input type="text"
+                                                       class="so_qmp-page-search regular-text"
+                                                       placeholder="<?php esc_attr_e( 'Search pages…', 'quick-multilingual' ); ?>"
+                                                       value="<?php echo esc_attr( $primary_title ); ?>"
+                                                       autocomplete="off"
+                                                       aria-autocomplete="list"
+                                                       aria-controls="so_qmp-results-<?php echo esc_attr( (string) ++$picker_uid ); ?>">
+                                                <input type="hidden"
+                                                       name="<?php echo esc_attr( Config::option_key( $i ) ); ?>[primary]"
+                                                       value="<?php echo esc_attr( (string) $primary_id ); ?>">
+                                                <ul class="so_qmp-page-results"
+                                                    id="so_qmp-results-<?php echo esc_attr( (string) $picker_uid ); ?>"
+                                                    role="listbox"
+                                                    hidden></ul>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="so_qmp-page-picker"
+                                                 data-scope="secondary"
+                                                 data-folder-id="<?php echo esc_attr( (string) $folder_id ); ?>">
+                                                <input type="text"
+                                                       class="so_qmp-page-search regular-text"
+                                                       placeholder="<?php esc_attr_e( 'Search pages…', 'quick-multilingual' ); ?>"
+                                                       value="<?php echo esc_attr( $secondary_title ); ?>"
+                                                       autocomplete="off"
+                                                       aria-autocomplete="list"
+                                                       aria-controls="so_qmp-results-<?php echo esc_attr( (string) ++$picker_uid ); ?>">
+                                                <input type="hidden"
+                                                       name="<?php echo esc_attr( Config::option_key( $i ) ); ?>[secondary]"
+                                                       value="<?php echo esc_attr( (string) $secondary_id ); ?>">
+                                                <ul class="so_qmp-page-results"
+                                                    id="so_qmp-results-<?php echo esc_attr( (string) $picker_uid ); ?>"
+                                                    role="listbox"
+                                                    hidden></ul>
+                                            </div>
+                                        </td>
+                                        <td class="so_qmp-remove-cell">
+                                            <button type="button"
+                                                    class="so_qmp-remove-row button-link"
+                                                    aria-label="<?php esc_attr_e( 'Remove mapping row', 'quick-multilingual' ); ?>">
+                                                −
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <?php endfor; ?>
+
+                                    <!-- Template row — hidden; cloned by JS for new rows -->
+                                    <tr id="so_qmp-row-template" class="page-mapping-row" data-row="0"
+                                        hidden aria-hidden="true">
+                                        <td>–</td>
+                                        <td>
+                                            <div class="so_qmp-page-picker" data-scope="primary">
+                                                <input type="text"
+                                                       class="so_qmp-page-search regular-text"
+                                                       placeholder="<?php esc_attr_e( 'Search pages…', 'quick-multilingual' ); ?>"
+                                                       autocomplete="off"
+                                                       aria-autocomplete="list">
+                                                <input type="hidden"
+                                                       name="so_qmp_page_mapping_0[primary]"
+                                                       value="0">
+                                                <ul class="so_qmp-page-results" role="listbox" hidden></ul>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="so_qmp-page-picker"
+                                                 data-scope="secondary"
+                                                 data-folder-id="<?php echo esc_attr( (string) $folder_id ); ?>">
+                                                <input type="text"
+                                                       class="so_qmp-page-search regular-text"
+                                                       placeholder="<?php esc_attr_e( 'Search pages…', 'quick-multilingual' ); ?>"
+                                                       autocomplete="off"
+                                                       aria-autocomplete="list">
+                                                <input type="hidden"
+                                                       name="so_qmp_page_mapping_0[secondary]"
+                                                       value="0">
+                                                <ul class="so_qmp-page-results" role="listbox" hidden></ul>
+                                            </div>
+                                        </td>
+                                        <td class="so_qmp-remove-cell">
+                                            <button type="button"
+                                                    class="so_qmp-remove-row button-link"
+                                                    aria-label="<?php esc_attr_e( 'Remove mapping row', 'quick-multilingual' ); ?>">
+                                                −
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table><!-- #page-translations-table -->
+
+                            <!-- Add mapping button / Premium CTA -->
+                            <div class="so_qmp-add-row-wrap">
+                                <button type="button"
+                                        id="so_qmp-add-mapping"
+                                        class="button"
+                                        <?php if ( $current_count >= Config::max_page_mappings() ) echo 'disabled'; ?>>
+                                    <?php esc_html_e( '+ Add mapping', 'quick-multilingual' ); ?>
+                                </button>
+
+                                <span class="so_qmp-premium-teaser"
+                                      id="so_qmp-add-cta"
+                                      <?php if ( $current_count < Config::max_page_mappings() ) echo 'hidden'; ?>>
+                                    <img src="<?php echo esc_url( $images_url . 'qml-premium-24.png' ); ?>"
+                                         class="so_qmp-teaser-logo"
+                                         alt="<?php esc_attr_e( 'Quick Multilingual Premium', 'quick-multilingual' ); ?>">
+                                    <span class="so_qmp-teaser-text">
+                                        <strong><?php esc_html_e( 'More page mappings with Premium', 'quick-multilingual' ); ?></strong>
+                                        <?php esc_html_e( 'Unlock up to 20 languages and up to 100 page mappings.', 'quick-multilingual' ); ?>
+                                    </span>
+                                    <a href="https://so-wp.com/quick-multilingual-premium"
+                                       class="button so_qmp-upgrade-btn">
+                                        <span class="dashicons dashicons-lock" aria-hidden="true"></span>
+                                        <?php esc_html_e( 'Upgrade to Premium', 'quick-multilingual' ); ?>
+                                    </a>
+                                </span>
+                            </div>
+
+                            <?php submit_button(); ?>
+                        </form>
+
                     </div><!-- #page-translations -->
 
                 </div><!-- .so_qmp-main-content -->

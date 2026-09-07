@@ -17,9 +17,9 @@ final readonly class SettingsRegistrar {
         register_setting( $group, Config::OPT_PRIMARY_HREFLANG, 'sanitize_text_field' );
         register_setting( $group, Config::OPT_SECONDARY_HREFLANG, 'sanitize_text_field' );
         register_setting( $group, Config::OPT_FOLDER_PAGE, 'absint' );
-        register_setting( $group, Config::OPT_NUMBER_OF_PAGES, [ $this, 'sanitize_number_of_pages' ] );
 
         $map_group = Config::OPTION_GROUP_MAP;
+        register_setting( $map_group, Config::OPT_NUMBER_OF_PAGES, [ $this, 'sanitize_number_of_pages' ] );
         for ( $i = 1; $i <= Config::max_page_mappings(); $i++ ) {
             register_setting( $map_group, Config::option_key( $i ), [ $this, 'sanitize_page_mapping' ] );
         }
