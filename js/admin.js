@@ -110,9 +110,20 @@ jQuery(document).ready(function($) {
 	}
 
 	function fetchPages(query, $results, scope, folderID) {
-		var url = so_qmp_vars.rest_pages_url + '?status=publish&per_page=20&orderby=title&order=asc';
-		if (query) {
-			url += '&search=' + encodeURIComponent(query);
+		var url, isCustomEndpoint;
+
+		if (scope === 'secondary' && folderID) {
+			url = so_qmp_vars.secondary_pages_url + '?ancestor=' + encodeURIComponent(folderID);
+			if (query) {
+				url += '&search=' + encodeURIComponent(query);
+			}
+			isCustomEndpoint = true;
+		} else {
+			url = so_qmp_vars.rest_pages_url + '?status=publish&per_page=20&orderby=title&order=asc';
+			if (query) {
+				url += '&search=' + encodeURIComponent(query);
+			}
+			isCustomEndpoint = false;
 		}
 
 		wp.apiFetch({
@@ -127,11 +138,10 @@ jQuery(document).ready(function($) {
 				$results.append('<li class="so_qmp-no-results">' + so_qmp_vars.no_results + '</li>');
 			} else {
 				pages.forEach(function(page) {
-					$results.append(
-						'<li role="option" data-id="' + page.id + '">' +
-						$('<div>').text(page.title.rendered).html() +
-						'</li>'
-					);
+					var title = isCustomEndpoint
+						? $('<div>').text(page.title).html()
+						: $('<div>').text(page.title.rendered).html();
+					$results.append('<li role="option" data-id="' + page.id + '">' + title + '</li>');
 				});
 			}
 			$results.attr('hidden', false);

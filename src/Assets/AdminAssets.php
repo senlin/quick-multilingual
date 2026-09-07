@@ -34,15 +34,16 @@ final readonly class AdminAssets {
             'so_qmp_admin_script',
             'so_qmp_vars',
             [
-                'select_label'       => esc_html__( '— Select —', 'quick-multilingual' ),
-                'rest_pages_url'     => rest_url( 'wp/v2/pages' ),
-                'nonce'              => wp_create_nonce( 'wp_rest' ),
-                'max_mappings'       => Config::max_page_mappings(),
-                'search_placeholder' => esc_html__( 'Search pages…', 'quick-multilingual' ),
-                'no_results'         => esc_html__( 'No pages found.', 'quick-multilingual' ),
-                'remove_label'       => esc_html__( '−', 'quick-multilingual' ),
-                'remove_aria'        => esc_html__( 'Remove mapping row', 'quick-multilingual' ),
-                'add_mapping_label'  => esc_html__( '+ Add mapping', 'quick-multilingual' ),
+                'select_label'        => esc_html__( '— Select —', 'quick-multilingual' ),
+                'rest_pages_url'      => rest_url( 'wp/v2/pages' ),
+                'secondary_pages_url' => rest_url( 'so-qmp/v1/pages' ),
+                'nonce'               => wp_create_nonce( 'wp_rest' ),
+                'max_mappings'        => Config::max_page_mappings(),
+                'search_placeholder'  => esc_html__( 'Search pages…', 'quick-multilingual' ),
+                'no_results'          => esc_html__( 'No pages found.', 'quick-multilingual' ),
+                'remove_label'        => esc_html__( '−', 'quick-multilingual' ),
+                'remove_aria'         => esc_html__( 'Remove mapping row', 'quick-multilingual' ),
+                'add_mapping_label'   => esc_html__( '+ Add mapping', 'quick-multilingual' ),
             ]
         );
     }

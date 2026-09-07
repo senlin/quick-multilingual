@@ -5,6 +5,7 @@ namespace SOWP\QuickMultilingual;
 
 use SOWP\QuickMultilingual\Admin\SettingsPage;
 use SOWP\QuickMultilingual\Admin\SettingsRegistrar;
+use SOWP\QuickMultilingual\Api\PagesEndpoint;
 use SOWP\QuickMultilingual\Assets\AdminAssets;
 use SOWP\QuickMultilingual\Frontend\HeadTags;
 use SOWP\QuickMultilingual\Frontend\Redirect;
@@ -40,6 +41,9 @@ final class Plugin {
 
         $assets = new AdminAssets();
         add_action( 'admin_enqueue_scripts', [ $assets, 'enqueue' ] );
+
+        $pages_endpoint = new PagesEndpoint();
+        add_action( 'rest_api_init', [ $pages_endpoint, 'register' ] );
 
         add_action( 'admin_notices', [ Activation::class, 'register_notices' ] );
         add_filter( 'plugin_action_links_' . SO_QMP_BASENAME, [ $this, 'settings_link' ] );
