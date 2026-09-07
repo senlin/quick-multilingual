@@ -90,9 +90,9 @@ final readonly class SettingsPage {
                                             <span class="so_qmp-teaser-text">
                                                 <strong><?php esc_html_e( 'More languages with Premium', 'quick-multilingual' ); ?></strong>
                                                 <?php esc_html_e( 'Unlock up to 20 languages and up to 100 page mappings.', 'quick-multilingual' ); ?>
+                                                <br><small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
                                             </span>
-                                            <?php // TODO: Replace '#' with the Premium purchase URL once the store is live. ?>
-                                            <a href="#" class="so_qmp-upgrade-btn button">
+                                            <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" class="so_qmp-upgrade-btn button">
                                                 <span class="dashicons dashicons-lock"></span>
                                                 <?php esc_html_e( 'Get Premium', 'quick-multilingual' ); ?>
                                             </a>
@@ -336,8 +336,9 @@ final readonly class SettingsPage {
                                     <span class="so_qmp-teaser-text">
                                         <strong><?php esc_html_e( 'More page mappings with Premium', 'quick-multilingual' ); ?></strong>
                                         <?php esc_html_e( 'Unlock up to 20 languages and up to 100 page mappings.', 'quick-multilingual' ); ?>
+                                        <br><small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
                                     </span>
-                                    <a href="https://so-wp.com/quick-multilingual-premium"
+                                    <a href="https://checkout.freemius.com/plugin/38924/plan/64672/"
                                        class="button so_qmp-upgrade-btn">
                                         <span class="dashicons dashicons-lock" aria-hidden="true"></span>
                                         <?php esc_html_e( 'Upgrade to Premium', 'quick-multilingual' ); ?>
@@ -366,8 +367,10 @@ final readonly class SettingsPage {
                             <li><?php esc_html_e( 'Full hreflang support for all languages', 'quick-multilingual' ); ?></li>
                             <li><?php esc_html_e( 'Priority support', 'quick-multilingual' ); ?></li>
                         </ul>
-                        <?php // TODO: Replace '#' with the Premium purchase URL once the store is live. ?>
-                        <a href="#" class="so_qmp-sidebar-btn button button-primary">
+                        <p style="text-align: center; margin: 10px 0 15px;">
+                            <small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
+                        </p>
+                        <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" class="so_qmp-sidebar-btn button button-primary">
                             <?php esc_html_e( 'Get Premium', 'quick-multilingual' ); ?>
                         </a>
                     </div>
