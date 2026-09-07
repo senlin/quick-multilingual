@@ -330,7 +330,7 @@ final readonly class SettingsPage {
                                 <span class="so_qmp-premium-teaser"
                                       id="so_qmp-add-cta"
                                       <?php if ( $current_count < Config::max_page_mappings() ) echo 'hidden'; ?>>
-                                    <img src="<?php echo esc_url( $images_url . 'qml-premium-24.png' ); ?>"
+                                    <img src="<?php echo esc_url( $images_url . 'qml-premium-48.png' ); ?>"
                                          class="so_qmp-teaser-logo"
                                          alt="<?php esc_attr_e( 'Quick Multilingual Premium', 'quick-multilingual' ); ?>">
                                     <span class="so_qmp-teaser-text">
