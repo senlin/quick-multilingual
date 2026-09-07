@@ -120,7 +120,7 @@ final readonly class SettingsPage {
                                 </tr>
 
                                 <tr>
-                                    <th scope="col"></th>
+                                    <th scope="col"><?php esc_html_e( 'Languages', 'quick-multilingual' ); ?></th>
                                     <th scope="col"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></th>
                                     <th scope="col"><?php esc_html_e( 'Hreflang', 'quick-multilingual' ); ?></th>
                                     <th scope="col"><?php esc_html_e( 'Language Folder Page', 'quick-multilingual' ); ?></th>
@@ -143,7 +143,7 @@ final readonly class SettingsPage {
                                 </tr>
 
                                 <tr>
-                                    <th scope="row"><?php esc_html_e( 'Primary Language', 'quick-multilingual' ); ?></th>
+                                    <th scope="row"><?php esc_html_e( 'Primary', 'quick-multilingual' ); ?></th>
                                     <td>
                                         <label class="so_qmp-field-label screen-reader-text" for="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></label>
                                         <input type="text" id="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>" name="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_PRIMARY_LANG ) ); ?>" class="regular-text" />
@@ -158,7 +158,7 @@ final readonly class SettingsPage {
                                 </tr>
 
                                 <tr>
-                                    <th scope="row"><?php esc_html_e( 'Secondary Language', 'quick-multilingual' ); ?></th>
+                                    <th scope="row"><?php esc_html_e( 'Secondary', 'quick-multilingual' ); ?></th>
                                     <td>
                                         <label class="so_qmp-field-label screen-reader-text" for="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></label>
                                         <input type="text" id="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>" name="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_SECONDARY_LANG ) ); ?>" class="regular-text" />
