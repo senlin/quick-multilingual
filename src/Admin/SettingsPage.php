@@ -62,7 +62,7 @@ final readonly class SettingsPage {
                             settings_fields( Config::OPTION_GROUP );
                             do_settings_sections( Config::OPTION_GROUP );
                             ?>
-                            <table class="so_qmp_table form-table so_qmp-lang-table" role="presentation">
+                            <table class="so_qmp_table form-table" role="presentation">
 
                                 <tr>
                                     <th scope="row">
@@ -145,9 +145,11 @@ final readonly class SettingsPage {
                                 <tr>
                                     <th scope="row"><?php esc_html_e( 'Primary Language', 'quick-multilingual' ); ?></th>
                                     <td>
+                                        <label class="so_qmp-field-label" for="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></label>
                                         <input type="text" id="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>" name="<?php echo esc_attr( Config::OPT_PRIMARY_LANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_PRIMARY_LANG ) ); ?>" class="regular-text" />
                                     </td>
                                     <td>
+                                        <label class="so_qmp-field-label" for="<?php echo esc_attr( Config::OPT_PRIMARY_HREFLANG ); ?>"><?php esc_html_e( 'Hreflang', 'quick-multilingual' ); ?></label>
                                         <input type="text" id="<?php echo esc_attr( Config::OPT_PRIMARY_HREFLANG ); ?>" name="<?php echo esc_attr( Config::OPT_PRIMARY_HREFLANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_PRIMARY_HREFLANG ) ); ?>" class="regular-text" />
                                     </td>
                                     <td class="so_qmp-na-cell">
@@ -158,9 +160,11 @@ final readonly class SettingsPage {
                                 <tr>
                                     <th scope="row"><?php esc_html_e( 'Secondary Language', 'quick-multilingual' ); ?></th>
                                     <td>
+                                        <label class="so_qmp-field-label" for="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></label>
                                         <input type="text" id="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>" name="<?php echo esc_attr( Config::OPT_SECONDARY_LANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_SECONDARY_LANG ) ); ?>" class="regular-text" />
                                     </td>
                                     <td>
+                                        <label class="so_qmp-field-label" for="<?php echo esc_attr( Config::OPT_SECONDARY_HREFLANG ); ?>"><?php esc_html_e( 'Hreflang', 'quick-multilingual' ); ?></label>
                                         <input type="text" id="<?php echo esc_attr( Config::OPT_SECONDARY_HREFLANG ); ?>" name="<?php echo esc_attr( Config::OPT_SECONDARY_HREFLANG ); ?>" value="<?php echo esc_attr( (string) get_option( Config::OPT_SECONDARY_HREFLANG ) ); ?>" class="regular-text" />
                                     </td>
                                     <td>
