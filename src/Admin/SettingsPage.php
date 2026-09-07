@@ -181,9 +181,10 @@ final readonly class SettingsPage {
                         <h2><?php esc_html_e( 'Map primary language pages to secondary language pages.', 'quick-multilingual' ); ?></h2>
 
                         <?php
-                        // Language switcher — Premium only (conditional)
+                        // Language switcher — Premium only (conditional).
+                        // Premium hooks onto this action to render the switcher.
                         if ( Config::max_languages() > 2 ) :
-                            // Future Premium implementation: render language switcher here
+                            do_action( 'so_qmp/page_translations/language_switcher' );
                         endif;
                         ?>
 
