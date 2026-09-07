@@ -119,7 +119,7 @@ jQuery(document).ready(function($) {
 		}
 
 		wp.apiFetch({
-			path: url,
+			url: url,
 			method: 'GET',
 			headers: {
 				'X-WP-Nonce': so_qmp_vars.nonce
