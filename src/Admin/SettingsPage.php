@@ -65,6 +65,7 @@ final readonly class SettingsPage {
                             ?>
                             <table class="so_qmp_table form-table" role="presentation">
 
+                                <?php if ( Config::max_languages() <= 2 ) : ?>
                                 <tr>
                                     <th scope="row">
                                         <label for="so_qmp_number_of_languages"><?php esc_html_e( 'Number of Languages', 'quick-multilingual' ); ?></label>
@@ -99,6 +100,9 @@ final readonly class SettingsPage {
                                         </span>
                                     </td>
                                 </tr>
+                                <?php else : ?>
+                                <?php do_action( 'so_qmp/general_settings/languages_control' ); ?>
+                                <?php endif; ?>
 
                                 <tr>
                                     <th scope="col"><?php esc_html_e( 'Languages', 'quick-multilingual' ); ?></th>
@@ -171,6 +175,10 @@ final readonly class SettingsPage {
                                         </div>
                                     </td>
                                 </tr>
+
+                                <?php if ( Config::max_languages() > 2 ) : ?>
+                                <?php do_action( 'so_qmp/general_settings/extra_language_rows' ); ?>
+                                <?php endif; ?>
 
                             </table>
                             <?php submit_button(); ?>

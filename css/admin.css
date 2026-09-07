@@ -276,8 +276,8 @@ p.so_qmp-lang-ref-link {
 }
 
 .so_qmp-remove-row.button-link {
-	color: var(--wc-destructive);
-	text-decoration: none;
+        color: var(--wc-destructive);
+        text-decoration: none;
 }
 
 .so_qmp-remove-row {
@@ -313,4 +313,14 @@ p.so_qmp-lang-ref-link {
     gap: 8px;
     margin-bottom: 12px;
     font-weight: 600;
+}
+
+
+
+/* -------------------------------------------------------
+   Extra language rows (Premium — General Settings)
+   Ensure hidden attribute is not overridden by table styles
+------------------------------------------------------- */
+tr.so_qmp-extra-lang-row[hidden] {
+    display: none;
 }
