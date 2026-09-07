@@ -114,9 +114,6 @@ jQuery(document).ready(function($) {
 		if (query) {
 			url += '&search=' + encodeURIComponent(query);
 		}
-		if (scope === 'secondary' && folderID) {
-			url += '&parent=' + folderID;
-		}
 
 		wp.apiFetch({
 			url: url,
