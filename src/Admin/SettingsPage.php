@@ -62,7 +62,7 @@ final readonly class SettingsPage {
                             settings_fields( Config::OPTION_GROUP );
                             do_settings_sections( Config::OPTION_GROUP );
                             ?>
-                            <table class="form-table" role="presentation">
+                            <table class="so_qmp_table form-table" role="presentation">
 
                                 <tr>
                                     <th scope="row">
@@ -119,8 +119,16 @@ final readonly class SettingsPage {
                                     </td>
                                 </tr>
 
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></th>
+                                    <th scope="col"><?php esc_html_e( 'Hreflang', 'quick-multilingual' ); ?></th>
+                                    <th scope="col"><?php esc_html_e( 'Language Folder Page', 'quick-multilingual' ); ?></th>
+                                </tr>
+
                                 <tr class="so_qmp-lang-ref-row">
-                                    <td colspan="4">
+                                    <td></td>
+                                    <td colspan="3">
                                         <?php
                                         printf(
                                             wp_kses(
@@ -132,13 +140,6 @@ final readonly class SettingsPage {
                                         );
                                         ?>
                                     </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col"><?php esc_html_e( 'HTML lang attribute', 'quick-multilingual' ); ?></th>
-                                    <th scope="col"><?php esc_html_e( 'Hreflang', 'quick-multilingual' ); ?></th>
-                                    <th scope="col"><?php esc_html_e( 'Language Folder Page', 'quick-multilingual' ); ?></th>
                                 </tr>
 
                                 <tr>

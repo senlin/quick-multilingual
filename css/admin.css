@@ -182,6 +182,9 @@ p.so_qmp-lang-ref-link {
 /* -------------------------------------------------------
    Language table: N/A cell and lang-ref row
 ------------------------------------------------------- */
+.so_qmp_table.form-table th {
+	padding: 15px 10px;
+}
 .so_qmp-na-cell {
     vertical-align: middle;
 }
@@ -192,7 +195,6 @@ p.so_qmp-lang-ref-link {
 }
 
 .so_qmp-lang-ref-row td {
-    padding-top: 16px;
-    padding-bottom: 4px;
-    font-size: 0.95em;
+    font-size: 1.2em;
+	font-weight: 600;
 }
