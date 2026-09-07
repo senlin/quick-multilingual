@@ -275,6 +275,11 @@ p.so_qmp-lang-ref-link {
     vertical-align: middle;
 }
 
+.so_qmp-remove-row.button-link {
+	color: var(--wc-destructive);
+	text-decoration: none;
+}
+
 .so_qmp-remove-row {
     color: #b32d2e;
     font-size: 1.4em;
