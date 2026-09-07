@@ -286,17 +286,12 @@ jQuery(document).ready(function($) {
                         var newName = 'so_qmp_page_mapping_' + rowIndex + '[' + keyName + ']';
                         $hidden.attr('name', newName);
 
-                        // Update value from pre-loaded data
-                        var pageID = rows[rowIndex] || 0;
-                        $hidden.val(pageID);
+                        // Update value and title from pre-loaded data
+                        var rowData = rows[rowIndex] || { id: 0, title: '' };
+                        $hidden.val(rowData.id);
 
-                        // Update text input (would need a title lookup for full implementation)
                         var $search = $secondaryPicker.find('.so_qmp-page-search');
-                        if (pageID > 0) {
-                                $search.val('[Page ' + pageID + ']'); // Placeholder; Premium would pre-load titles
-                        } else {
-                                $search.val('');
-                        }
+                        $search.val(rowData.title);
                 });
         });
 
