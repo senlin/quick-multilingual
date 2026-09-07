@@ -40,10 +40,13 @@ jQuery(document).ready(function($) {
                 var selectedID = $hidden.val();
                 var lastQuery = '';
 
-                // Focus: show results or fetch if empty
+                // Focus: show results or fetch if empty.
+                // Read data-folder-id live from the DOM each time: the language switcher
+                // updates it after this picker was initialised, so the captured value
+                // would otherwise be stale (searching the previous language's folder).
                 $search.on('focus', function() {
                         if ($results.children().length === 0) {
-                                fetchPages('', $results, scope, folderID);
+                                fetchPages('', $results, scope, $picker.attr('data-folder-id') || 0);
                         } else {
                                 $results.attr('hidden', false);
                         }
@@ -54,7 +57,7 @@ jQuery(document).ready(function($) {
                         var query = $(this).val();
                         clearTimeout(debounceTimer);
                         debounceTimer = setTimeout(function() {
-                                fetchPages(query, $results, scope, folderID);
+                                fetchPages(query, $results, scope, $picker.attr('data-folder-id') || 0);
                         }, 300);
                 });
 
@@ -272,6 +275,10 @@ jQuery(document).ready(function($) {
 
                         // Update folder ID
                         $secondaryPicker.attr('data-folder-id', folderID);
+
+                        // Drop any cached results from the previous language so the next
+                        // focus/search fetches pages from the new folder, not the old one.
+                        $secondaryPicker.find('.so_qmp-page-results').empty().attr('hidden', true);
 
                         // Update hidden input name
                         var $hidden = $secondaryPicker.find('input[type="hidden"]');
