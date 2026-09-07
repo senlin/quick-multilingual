@@ -260,6 +260,10 @@ jQuery(document).ready(function($) {
                         return;
                 }
 
+                // Remember the language being edited so a save (which reloads the
+                // page) returns to it instead of resetting to the first option.
+                localStorage.setItem('so_qmp_lang_switcher', String(newIndex));
+
                 var langData = so_qmp_lang_data[newIndex];
                 var folderID = langData.folder_id;
                 var langName = langData.name;
@@ -294,6 +298,18 @@ jQuery(document).ready(function($) {
                         $search.val(rowData.title);
                 });
         });
+
+        // On load, restore the last-edited language so a save round-trip keeps the
+        // switcher (and the table) on the language the user was working on.
+        var $switcher = $('#so_qmp-lang-switcher-select');
+        if ($switcher.length) {
+                var savedLang = localStorage.getItem('so_qmp_lang_switcher');
+                if (savedLang !== null && $switcher.find('option[value="' + savedLang + '"]').length) {
+                        if ($switcher.val() !== savedLang) {
+                                $switcher.val(savedLang).trigger('change');
+                        }
+                }
+        }
 
         /* -------------------------------------------------------
            Number of Languages selector (Premium — General Settings)
