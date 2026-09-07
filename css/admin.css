@@ -198,3 +198,33 @@ p.so_qmp-lang-ref-link {
     font-size: 1.2em;
 	font-weight: 600;
 }
+
+/* -------------------------------------------------------
+   General Settings language table column widths
+------------------------------------------------------- */
+.so_qmp-lang-table {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.so_qmp-lang-table th:first-child,
+.so_qmp-lang-table td:first-child {
+	width: 160px;
+}
+
+.so_qmp-lang-table th:nth-child(2),
+.so_qmp-lang-table td:nth-child(2),
+.so_qmp-lang-table th:nth-child(3),
+.so_qmp-lang-table td:nth-child(3) {
+	width: 22%;
+}
+
+.so_qmp-lang-table th:nth-child(4),
+.so_qmp-lang-table td:nth-child(4) {
+	width: auto;
+}
+
+.so_qmp-lang-table .regular-text {
+	width: 100%;
+	box-sizing: border-box;
+}
