@@ -157,6 +157,10 @@ p.so_qmp-lang-ref-link {
     vertical-align: middle;
 }
 
+.so_qmp-premium-teaser[hidden] {
+    display: none;
+}
+
 .so_qmp-teaser-logo {
     width: 24px;
     height: 24px;
