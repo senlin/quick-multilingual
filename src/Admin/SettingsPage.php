@@ -45,6 +45,7 @@ final readonly class SettingsPage {
             </h1>
 
             <p><?php esc_html_e( 'Quick Multilingual is a WordPress plugin designed to enhance multilingual websites by adjusting the HTML lang attribute and adding hreflang tags.', 'quick-multilingual' ); ?></p>
+            <?php if ( Config::max_languages() <= 2 ) : ?>
             <p><?php esc_html_e( 'This plugin allows you to set the HTML language attribute for up to two languages, custom hreflang codes for those languages, redirect the "language folder" (the secondary language placeholder page) to its respective homepage, map up to 4 primary language pages to their secondary page translations and properly handle language attributes for better SEO and user experience.', 'quick-multilingual' ); ?></p>
             <p>
             <?php
@@ -55,6 +56,9 @@ final readonly class SettingsPage {
             );
             ?>
             </p>
+            <?php else : ?>
+            <p><?php esc_html_e( 'This plugin allows you to set the HTML language attribute and custom hreflang codes for up to 20 languages, redirect the "language folder" (the secondary languages placeholder pages) to their respective homepages, map up to 100 primary language pages to their secondary page translations and properly handle language attributes for better SEO and user experience.', 'quick-multilingual' ); ?></p>
+            <?php endif; ?>
 
             <h2 class="nav-tab-wrapper">
                 <a href="#general-settings" class="nav-tab nav-tab-active"><?php esc_html_e( 'General Settings', 'quick-multilingual' ); ?></a>
