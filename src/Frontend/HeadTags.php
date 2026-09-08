@@ -52,6 +52,8 @@ final readonly class HeadTags {
             }
             $x_default = $primary_url ?: ( $secondary_url ?: $current_url );
             printf( '<link rel="alternate" hreflang="x-default" href="%s" />' . PHP_EOL, esc_url( $x_default ) );
+            // Allow addons to emit additional hreflang tags (e.g. lang_3+ in Premium).
+            do_action( 'so_qmp/hreflang_extra', $row );
             return;
         }
 
@@ -65,6 +67,9 @@ final readonly class HeadTags {
         $primary   = get_option( Config::OPT_PRIMARY_LANG );
         $secondary = get_option( Config::OPT_SECONDARY_LANG );
         $html_lang = $this->resolver->is_secondary_context() ? $secondary : $primary;
+
+        // Allow addons to override the detected language (e.g. Premium sets lang_3+ pages correctly).
+        $html_lang = (string) apply_filters( 'so_qmp/html_lang', $html_lang, (int) get_queried_object_id() );
 
         $new = preg_replace( '/lang="[^"]*"/', 'lang="' . esc_attr( (string) $html_lang ) . '"', $output );
         if ( $new === $output ) {
