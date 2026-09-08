@@ -46,6 +46,15 @@ final readonly class SettingsPage {
 
             <p><?php esc_html_e( 'Quick Multilingual is a WordPress plugin designed to enhance multilingual websites by adjusting the HTML lang attribute and adding hreflang tags.', 'quick-multilingual' ); ?></p>
             <p><?php esc_html_e( 'This plugin allows you to set the HTML language attribute for up to two languages, custom hreflang codes for those languages, redirect the "language folder" (the secondary language placeholder page) to its respective homepage, map up to 4 primary language pages to their secondary page translations and properly handle language attributes for better SEO and user experience.', 'quick-multilingual' ); ?></p>
+            <p>
+            <?php
+            printf(
+                esc_html__( 'Upgrade to %1$sQuick Multilingual Premium%2$s, from EUR 14.99/year, to add up to 20 languages and map up to 100 primary language pages to their translations.', 'quick-multilingual' ),
+                '<a href="' . esc_url( 'https://checkout.freemius.com/plugin/38924/plan/64672/' ) . '" target="_blank" rel="noopener noreferrer">',
+                '</a>'
+            );
+            ?>
+            </p>
 
             <h2 class="nav-tab-wrapper">
                 <a href="#general-settings" class="nav-tab nav-tab-active"><?php esc_html_e( 'General Settings', 'quick-multilingual' ); ?></a>
@@ -93,7 +102,7 @@ final readonly class SettingsPage {
                                                 <?php esc_html_e( 'Unlock up to 20 languages and up to 100 page mappings.', 'quick-multilingual' ); ?>
                                                 <br><small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
                                             </span>
-                                            <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" class="so_qmp-upgrade-btn button">
+                                            <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener noreferrer" class="so_qmp-upgrade-btn button">
                                                 <span class="dashicons dashicons-lock"></span>
                                                 <?php esc_html_e( 'Get Premium', 'quick-multilingual' ); ?>
                                             </a>
@@ -347,8 +356,7 @@ final readonly class SettingsPage {
                                         <?php esc_html_e( 'Unlock up to 20 languages and up to 100 page mappings.', 'quick-multilingual' ); ?>
                                         <br><small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
                                     </span>
-                                    <a href="https://checkout.freemius.com/plugin/38924/plan/64672/"
-                                       class="button so_qmp-upgrade-btn">
+                                    <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener noreferrer" class="button so_qmp-upgrade-btn">
                                         <span class="dashicons dashicons-lock" aria-hidden="true"></span>
                                         <?php esc_html_e( 'Upgrade to Premium', 'quick-multilingual' ); ?>
                                     </a>
@@ -379,7 +387,7 @@ final readonly class SettingsPage {
                         <p style="text-align: center; margin: 10px 0 15px;">
                             <small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
                         </p>
-                        <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" class="so_qmp-sidebar-btn button button-primary">
+                        <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener noreferrer" class="so_qmp-sidebar-btn button button-primary">
                             <?php esc_html_e( 'Get Premium', 'quick-multilingual' ); ?>
                         </a>
                     </div>
