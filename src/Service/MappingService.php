@@ -24,7 +24,8 @@ final readonly class MappingService {
                 return $row;
             }
         }
-        return null;
+        // Allow addons to resolve rows that contain additional columns (e.g. lang_3+).
+        return apply_filters( 'so_qmp/row_for_page_fallback', null, $page_id );
     }
 
     /**
