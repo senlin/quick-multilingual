@@ -38,9 +38,15 @@ final readonly class SettingsPage {
         <div class="wrap">
 
             <h1 class="so_qmp-page-title">
-                <img src="<?php echo esc_url( $images_url . 'qml-free-64.png' ); ?>"
+                <?php if ( Config::max_languages() <= 2 ) : ?>
+                    <img src="<?php echo esc_url( $images_url . 'qml-free-64.png' ); ?>"
                      alt="<?php esc_attr_e( 'Quick Multilingual', 'quick-multilingual' ); ?>"
                      class="so_qmp-title-logo" />
+                <?php else : ?>
+                    <img src="<?php echo esc_url( $images_url . 'qml-premium-64.png' ); ?>"
+                     alt="<?php esc_attr_e( 'Quick Multilingual Premium', 'quick-multilingual' ); ?>"
+                     class="so_qmp-title-logo" />
+                <?php endif; ?>
                 <?php echo esc_html( get_admin_page_title() ); ?>
             </h1>
 
@@ -51,13 +57,13 @@ final readonly class SettingsPage {
             <?php
             printf(
                 esc_html__( 'Upgrade to %1$sQuick Multilingual Premium%2$s, from EUR 14.99/year, to add up to 20 languages and map up to 100 primary language pages to their translations.', 'quick-multilingual' ),
-                '<a href="' . esc_url( 'https://checkout.freemius.com/plugin/38924/plan/64672/' ) . '" target="_blank" rel="noopener noreferrer">',
+                '<a href="' . esc_url( 'https://checkout.freemius.com/plugin/38924/plan/64672/' ) . '" target="_blank" rel="noopener nofollow">',
                 '</a>'
             );
             ?>
             </p>
             <?php else : ?>
-            <p><?php esc_html_e( 'This plugin allows you to set the HTML language attribute and custom hreflang codes for up to 20 languages, redirect the "language folder" (the secondary languages placeholder pages) to their respective homepages, map up to 100 primary language pages to their secondary page translations and properly handle language attributes for better SEO and user experience.', 'quick-multilingual' ); ?></p>
+            <p><?php esc_html_e( 'This Premium version of the plugin allows you to set the HTML language attribute and custom hreflang codes for up to 20 languages, redirect the "language folder" (the secondary languages placeholder pages) to their respective homepages, map up to 100 primary language pages to their secondary page translations and properly handle language attributes for better SEO and user experience.', 'quick-multilingual' ); ?></p>
             <?php endif; ?>
 
             <h2 class="nav-tab-wrapper">
@@ -106,7 +112,7 @@ final readonly class SettingsPage {
                                                 <?php esc_html_e( 'Unlock up to 20 languages and up to 100 page mappings.', 'quick-multilingual' ); ?>
                                                 <br><small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
                                             </span>
-                                            <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener noreferrer" class="so_qmp-upgrade-btn button">
+                                            <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener nofollow" class="so_qmp-upgrade-btn button">
                                                 <span class="dashicons dashicons-lock"></span>
                                                 <?php esc_html_e( 'Get Premium', 'quick-multilingual' ); ?>
                                             </a>
@@ -213,7 +219,7 @@ final readonly class SettingsPage {
                             <?php
                             settings_fields( Config::OPTION_GROUP_MAP );
                             do_settings_sections( Config::OPTION_GROUP_MAP );
-                            $current_count = absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) );
+                            $current_count = min( absint( get_option( Config::OPT_NUMBER_OF_PAGES, 1 ) ), Config::max_page_mappings() );
                             $folder_id     = absint( get_option( Config::OPT_FOLDER_PAGE ) );
                             $picker_uid    = 0; // Incremented for each picker to ensure unique IDs
                             ?>
@@ -360,7 +366,7 @@ final readonly class SettingsPage {
                                         <?php esc_html_e( 'Unlock up to 20 languages and up to 100 page mappings.', 'quick-multilingual' ); ?>
                                         <br><small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
                                     </span>
-                                    <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener noreferrer" class="button so_qmp-upgrade-btn">
+                                    <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener nofollow" class="button so_qmp-upgrade-btn">
                                         <span class="dashicons dashicons-lock" aria-hidden="true"></span>
                                         <?php esc_html_e( 'Upgrade to Premium', 'quick-multilingual' ); ?>
                                     </a>
@@ -374,6 +380,7 @@ final readonly class SettingsPage {
 
                 </div><!-- .so_qmp-main-content -->
 
+                <?php if ( Config::max_languages() <= 2 ) : ?>
                 <div class="so_qmp-premium-sidebar">
                     <div class="so_qmp-sidebar-inner">
                         <div class="so_qmp-sidebar-header">
@@ -391,11 +398,12 @@ final readonly class SettingsPage {
                         <p style="text-align: center; margin: 10px 0 15px;">
                             <small><?php esc_html_e( 'from EUR 14.99/year', 'quick-multilingual' ); ?></small>
                         </p>
-                        <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener noreferrer" class="so_qmp-sidebar-btn button button-primary">
+                        <a href="https://checkout.freemius.com/plugin/38924/plan/64672/" target="_blank" rel="noopener nofollow" class="so_qmp-sidebar-btn button button-primary">
                             <?php esc_html_e( 'Get Premium', 'quick-multilingual' ); ?>
                         </a>
                     </div>
                 </div><!-- .so_qmp-premium-sidebar -->
+                <?php endif; ?>
 
             </div><!-- .so_qmp-content-with-sidebar -->
 
