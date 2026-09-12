@@ -4,8 +4,8 @@
 
 > **Note:** The automated [PluginTests.com](https://plugintests.com/plugins/wporg/quick-multilingual/latest) smoke test currently runs on PHP 8.1.12. Quick Multilingual requires PHP 8.2 or higher, so its activation test may report a failure on that service even though the plugin is tested against its supported PHP version.
 
-###### Last updated on September 5, 2026
-###### Development version 2.0.3
+###### Last updated on September 8, 2026
+###### Development version 2.1
 ###### requires at least WordPress 6.2
 ###### tested up to WordPress 7.1
 ###### Author: [Pieter Bos](https://github.com/senlin)
@@ -14,7 +14,7 @@ Quick Multilingual allows you to create multilingual brochure sites on WordPress
 
 ## Description
 
-Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-friendly solution for creating bilingual websites with the flexibility to expand into multilingual sites in the future. This Lite version is tailored for smaller websites with up to two languages and a maximum of four pages, making it perfect for businesses and individuals who need a straightforward setup. The plugin automatically adjusts the HTML lang attribute and adding hreflang tags for better SEO and user experience.
+Quick Multilingual is a WordPress plugin designed to offer a streamlined, user-friendly solution for creating bilingual websites with the flexibility to expand into multilingual sites with [Quick Multilingual Premium](https://checkout.freemius.com/plugin/38924/plan/64672/). This Lite version is tailored for smaller websites with up to two languages and a maximum of four pages, making it perfect for businesses and individuals who need a straightforward setup. The plugin automatically adjusts the HTML lang attribute and adding hreflang tags for better SEO and user experience.
 
 ## Features
 
@@ -59,6 +59,10 @@ Yes, this plugin is designed to work with most themes, but menu handling is not 
 Great question!
 Indeed the Quick Multilingual plugin writes its settings to the database. The included `uninstall.php` file removes all the plugin-related entries from the database once you remove the plugin via the WordPress Plugins page (not on deactivation).
 
+### How to add more languages and/or Pages?
+
+By upgrading to the [Premium version of the plugin](https://checkout.freemius.com/plugin/38924/plan/64672/) (from EUR 14.99/year only) you can add up to 20 languages and map up to 100 Pages.
+
 ### I have an issue with this plugin, where can I get support?
 
 Please open an issue on [Github](https://github.com/senlin/quick-multilingual/issues)
@@ -102,6 +106,15 @@ Plugin Settings page (two tabs) and frontend output.
 ![Frontend sourcecode secondary language](assets/screenshot-4.jpg "Frontend sourcecode secondary language")
 
 ## Changelog
+
+### 2.1
+
+* date: September 8, 2026
+* Added: Extension hooks for Premium addon support (so_qmp/row_for_page_fallback, so_qmp/hreflang_extra, so_qmp/html_lang) enabling dynamic page resolution and hreflang emission for languages beyond the base tier.
+* Changed: HeadTags and MappingService refactored for extensibility; Lite remains a self-contained 2-language solution while its architecture now explicitly supports addon enhancement.
+* Changed: Settings page reorganized with improved language row grouping and clearer option labeling.
+* Fixed: Admin settings page now properly preserves non-submitted language columns during partial edits, preventing unintended data loss when editing individual mapping rows.
+* Developer: Tier limit filters (so_qmp/tier, so_qmp/max_languages, so_qmp/max_page_mappings) are now the canonical source for version capabilities, allowing Premium to transparently override limits without modifying Lite code.
 
 ### 2.0.3
 
